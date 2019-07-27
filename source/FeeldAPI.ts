@@ -6,6 +6,9 @@ const SESSION_TOKEN =
 /**
  * Gets 20 random users (out of 100) from the Feeld developer test API.
  *
+ * Note that the users returned are not unique. That means a response can contain the same user
+ * object multiple times. I have for example seen a request that included the same user 3 times.
+ *
  * After a bit of testing here are few responses that I've seen. Of note is that the the status
  * attribute is "status" on successful requests but "statusCode" on unsuccessful one.
  *

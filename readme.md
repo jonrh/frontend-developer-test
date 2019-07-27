@@ -10,6 +10,9 @@ The project is formatted with [Prettier](https://prettier.io/).
   emojis can render properly in text elements. I forgot if they did or not. I just remember that in
   Creact React App emojis need to be put into <span> elements with the correct attributes. Just
   wondering if the same applies here for React Native.
+- I discovered that the response from the API can contain the same user multiple times in the same
+  request. I created a script outside the project that called the API about 30 times and extracted
+  all 100 unique user objects and put them in the `users.ts` file.
 
 ## Files & Folders
 
@@ -18,6 +21,8 @@ The project is formatted with [Prettier](https://prettier.io/).
 - `node_modules/`: Third party JavaScript dependencies. This folder is created and populated after running the command `yarn install` or `npm install`. This folder should not be modified.
 - `source/`: Contains the source code of the app.
   - `Main.tsx`: The root component of the app.
+  - `users.ts`: A TypeScript file that contains all 100 users provided by the Feeld API. Note: not
+    submitted to git, kept private for now.
 - `.gitignore`: Specifies what files and folders we don't want to keep track of in our [Git](https://git-scm.com/) repository.
 - `.watchmanconfig`: TODO
 - `app.json`: App configurations that do not belong to code. Name of app, SDK versions to use, etc.

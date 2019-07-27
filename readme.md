@@ -1,7 +1,10 @@
 # Feeld Frontend Coding Challenge
-By Jón Rúnar Helgason.
 
-# Original Challenge Description
+This is a [coding challenge](https://github.com/Feeld/frontend-developer-test) for [Feeld](https://feeld.co/). The challenge will take place between 2019-07-27 and 2019-08-03. The task is to create a dating app in [React Native](https://facebook.github.io/react-native/) and [Expo](https://expo.io/).
+
+---
+
+# Original Challenge Description by Feeld
 
 Hi! welcome to Feeld. As part of the recruitment process we want to know how you think, code and structure your work. In order to do that, we're going to ask you to complete this coding challenge. 
 

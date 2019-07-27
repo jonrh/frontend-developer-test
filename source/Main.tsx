@@ -40,7 +40,7 @@ class Main extends React.Component<State, Props> {
     errorMessage: "",
   };
 
-  componentDidMount(): void {
+  getUsers = () => {
     get20Users()
       .then(users => {
         this.setState({
@@ -53,6 +53,10 @@ class Main extends React.Component<State, Props> {
           errorMessage: `Error: ${error}`,
         });
       });
+  };
+
+  componentDidMount(): void {
+    this.getUsers();
   }
 
   render() {
@@ -75,6 +79,8 @@ class Main extends React.Component<State, Props> {
         <ScrollView style={styles.scrollview} contentContainerStyle={styles.scrollViewContent}>
           {usersComponent}
         </ScrollView>
+
+        <Button title="Get New users" color="black" onPress={this.getUsers} />
 
         {/* Display the error if it occurred */}
         {errorMessage ? error : null}

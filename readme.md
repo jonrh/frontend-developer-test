@@ -2,6 +2,22 @@
 
 This is a [coding challenge](https://github.com/Feeld/frontend-developer-test) for [Feeld](https://feeld.co/). The challenge will take place between 2019-07-27 and 2019-08-03. The task is to create a dating app in [React Native](https://facebook.github.io/react-native/) and [Expo](https://expo.io/).
 
+## Files & Folders
+
+- `.expo/`: TODO
+- `assets/`: TODO
+- `node_modules/`: Third party JavaScript dependencies. This folder is created and populated after running the command `yarn install` or `npm install`. This folder should not be modified.
+- `.gitignore`: Specifies what files and folders we don't want to keep track of in our [Git](https://git-scm.com/) repository.
+- `.watchmanconfig`: TODO
+- `app.json`: TODO
+- `App.tsx`: TODO
+- `babel.config.js`: TODO
+- `package.json`: TODO
+- `prettier.config.js`: Settings file for our automatic source code formatter [Prettier](https://prettier.io/). Prettier comes with some
+- `readme.md`: This document. Introductory text to help readers understand what this is and how to get started developing.
+- `tsconfig.json`: TODO
+- `yarn.lock`: TODO
+
 ---
 
 # Original Challenge Description by Feeld

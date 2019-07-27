@@ -1,4 +1,7 @@
-# Frontend Developer Coding Challenge
+# Feeld Frontend Coding Challenge
+By Jón Rúnar Helgason.
+
+# Original Challenge Description
 
 Hi! welcome to Feeld. As part of the recruitment process we want to know how you think, code and structure your work. In order to do that, we're going to ask you to complete this coding challenge. 
 

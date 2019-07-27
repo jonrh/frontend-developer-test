@@ -10,6 +10,6 @@
  *  + https://prettier.io/docs/en/options.html - list of options and their default values
  */
 module.exports = {
-  "printWidth": 100,
-  "trailingComma": "es5",
+  printWidth: 100,
+  trailingComma: "es5",
 };

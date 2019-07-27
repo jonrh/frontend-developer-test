@@ -1,36 +1,12 @@
 import React from "react";
 import { Button, ScrollView, StyleSheet, Text, View } from "react-native";
+
 import { get20Users } from "./FeeldAPI";
-
-interface User {
-  id: string; // Example: "55be3c8fc964860700ebf515"
-  info: UserInfo;
-
-  // If the user forms a part of a couple this will be populated with the other User's ID
-  associated?: string;
-  photos: UserPhoto;
-}
-
-interface UserInfo {
-  age: number; // 20
-  type: string; // "single"
-  gender: string; // "male"
-  sexuality: string; // "straight"
-  name: string; // John
-  about?: string; // A short text about the user. Example: "Tell us about you"
-  desires?: string[];
-  interests?: string[];
-}
-
-interface UserPhoto {
-  url: string;
-  width: number;
-  height: number;
-}
+import { User } from "./Types";
 
 interface Props {}
 interface State {
-  users: any;
+  users: User[];
   errorMessage: string;
 }
 

@@ -3,3 +3,15 @@
 
 # IntelliJ IDE settings folder, for example for WebStorm
 .idea/
+
+# Entries from creating an Expo app
+node_modules/**/*
+.expo/*
+npm-debug.*
+*.jks
+*.p12
+*.key
+*.mobileprovision
+*.orig.*
+web-build/
+web-report/

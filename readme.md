@@ -2,15 +2,26 @@
 
 This is a [coding challenge](https://github.com/Feeld/frontend-developer-test) for [Feeld](https://feeld.co/). The challenge will take place between 2019-07-27 and 2019-08-03. The task is to create a dating app in [React Native](https://facebook.github.io/react-native/) and [Expo](https://expo.io/).
 
+The project is formatted with [Prettier](https://prettier.io/).
+
+## Work in progress note:
+
+- User with ID "55be3c90c964860700ebf5dd" has an interest with an emoji. I should make sure that
+  emojis can render properly in text elements. I forgot if they did or not. I just remember that in
+  Creact React App emojis need to be put into <span> elements with the correct attributes. Just
+  wondering if the same applies here for React Native.
+
 ## Files & Folders
 
 - `.expo/`: TODO
 - `assets/`: TODO
 - `node_modules/`: Third party JavaScript dependencies. This folder is created and populated after running the command `yarn install` or `npm install`. This folder should not be modified.
+- `source/`: Contains the source code of the app.
+  - `Main.tsx`: The root component of the app.
 - `.gitignore`: Specifies what files and folders we don't want to keep track of in our [Git](https://git-scm.com/) repository.
 - `.watchmanconfig`: TODO
 - `app.json`: TODO
-- `App.tsx`: TODO
+- `App.tsx`: The main entry point into the app as dictated by the Expo framework. Just a shell that redirects to `source/Main.tsx`.
 - `babel.config.js`: TODO
 - `package.json`: TODO
 - `prettier.config.js`: Settings file for our automatic source code formatter [Prettier](https://prettier.io/). Prettier comes with some

@@ -10,7 +10,7 @@ export interface User {
     sexuality: Sexuality;
     name: string; // Fanciulla72
   };
-  photos: UserPhoto[];
+  photos?: UserPhoto[];
 }
 
 export interface UserInfo {

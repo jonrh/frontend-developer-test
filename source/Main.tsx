@@ -1,8 +1,9 @@
 import React from "react";
 import { Button, ScrollView, StyleSheet, Text, View } from "react-native";
 
-import { get20Users, getLocalUsers } from "./FeeldAPI";
 import { User } from "./Types";
+import { get20Users, getLocalUsers } from "./FeeldAPI";
+import UserView from "./UserView";
 
 interface Props {}
 interface State {
@@ -56,9 +57,7 @@ class Main extends React.Component<State, Props> {
 
     // If we have users populate the the users component
     if (users.length > 0) {
-      usersComponent = users.map((user, index) => {
-        return <Text key={index}>{`${user.info.age} ${user.info.name}`}</Text>;
-      });
+      usersComponent = users.map((user, index) => <UserView user={user} key={index} />);
     }
 
     return (
@@ -78,7 +77,7 @@ class Main extends React.Component<State, Props> {
   }
 }
 
-const isDebug = true;
+const isDebug = false;
 
 const styles = StyleSheet.create({
   container: {

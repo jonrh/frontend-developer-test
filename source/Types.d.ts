@@ -6,8 +6,8 @@ export interface User {
   // If the user forms a part of a couple this will be populated with the other User's ID
   associated?: {
     age: number; // 42
-    gender: string; // female
-    sexuality: string; // straight
+    gender: Gender;
+    sexuality: Sexuality;
     name: string; // Fanciulla72
   };
   photos: UserPhoto[];
@@ -15,9 +15,9 @@ export interface User {
 
 export interface UserInfo {
   age: number; // 20
-  type: string; // "single"
-  gender: string; // "male"
-  sexuality: string; // "straight"
+  type: "single" | "couple";
+  gender: Gender;
+  sexuality: Sexuality;
   name: string; // John
   about?: string; // A short text about the user. Example: "Tell us about you"
   desires?: string[];
@@ -29,3 +29,12 @@ export interface UserPhoto {
   width: number; // 960
   height: number; // 1285
 }
+
+/** "male" or "female" in data set of 100 users. Intentionally declared as any type of string. */
+type Gender = string;
+
+/**
+ * "straight", "gay", "bisexual", "pansexual", "polysexual" in data set of 100 users.
+ * For now intentionally declared as string instead of union type.
+ */
+type Sexuality = string;

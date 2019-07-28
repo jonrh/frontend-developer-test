@@ -1,5 +1,9 @@
 import axios, { AxiosRequestConfig } from "axios";
+import MockAdapter from "axios-mock-adapter";
 
+import users from "./users";
+
+const URL = "https://fld-devtest-api.herokuapp.com/api/v1/users";
 const SESSION_TOKEN =
   "3TtY+AVtEJMaOPWGyEulVEgVBWZ8gqM75gag6wCcA3rJCYWMkX/ZmAOJxrZ4bPyBLJBch7VyMYD8ZCWoNPCUnJbT5M2iRWjJteGrfNhFzd+0oDbWQwiNAIdG0W9rHw7sKAAWk5uEzjs+lPykJnmy56LRwSFpoyxHC7p9G3KTQoQ=";
 
@@ -39,7 +43,7 @@ const SESSION_TOKEN =
 export function get20Users() {
   const axiosConfig: AxiosRequestConfig = {
     method: "get",
-    url: "https://fld-devtest-api.herokuapp.com/api/v1/users",
+    url: URL,
     headers: {
       "session-token": SESSION_TOKEN,
     },
@@ -48,4 +52,14 @@ export function get20Users() {
   return axios(axiosConfig)
     .then(results => results.data.data)
     .catch(error => console.log(error));
+}
+
+export function getLocalUsers() {
+  const mock = new MockAdapter(axios);
+  mock.onGet(URL).reply(200, {
+    status: 200,
+    data: users,
+  });
+
+  return get20Users();
 }

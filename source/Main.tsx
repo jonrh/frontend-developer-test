@@ -1,7 +1,7 @@
 import React from "react";
 import { Button, ScrollView, StyleSheet, Text, View } from "react-native";
 
-import { get20Users } from "./FeeldAPI";
+import { get20Users, getLocalUsers } from "./FeeldAPI";
 import { User } from "./Types";
 
 interface Props {}
@@ -17,7 +17,20 @@ class Main extends React.Component<State, Props> {
   };
 
   getUsers = () => {
-    get20Users()
+    // get20Users()
+    //   .then(users => {
+    //     this.setState({
+    //       users: users,
+    //       errorMessage: "",
+    //     });
+    //   })
+    //   .catch(error => {
+    //     this.setState({
+    //       errorMessage: `Error: ${error}`,
+    //     });
+    //   });
+
+    getLocalUsers()
       .then(users => {
         this.setState({
           users: users,

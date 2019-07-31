@@ -1,8 +1,8 @@
 import React from "react";
 import { Button, ScrollView, StyleSheet, Text, View } from "react-native";
 
-import { User } from "./Types";
-import { get20Users, getLocalUsers } from "./FeeldAPI";
+import { User } from "../Types";
+import { get20Users, getLocalUsers } from "../FeeldAPI";
 import UserView from "./UserView";
 
 interface Props {}
@@ -30,20 +30,6 @@ class Main extends React.Component<State, Props> {
           errorMessage: `Error: ${error}`,
         });
       });
-
-    // For debugging
-    // getLocalUsers()
-    //   .then(users => {
-    //     this.setState({
-    //       users: users,
-    //       errorMessage: "",
-    //     });
-    //   })
-    //   .catch(error => {
-    //     this.setState({
-    //       errorMessage: `Error: ${error}`,
-    //     });
-    //   });
   };
 
   componentDidMount(): void {

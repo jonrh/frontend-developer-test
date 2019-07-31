@@ -1,3 +1,5 @@
+// Our own TypeScript types used for this project
+
 /** The main object we work with. A user of the dating app. */
 export interface User {
   id: string; // Example: "55be3c8fc964860700ebf515"

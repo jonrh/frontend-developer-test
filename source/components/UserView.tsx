@@ -1,7 +1,7 @@
 import React from "react";
 import { Text, View, StyleSheet, Image } from "react-native";
 
-import { User, UserPhoto } from "./Types";
+import { User, UserPhoto } from "../Types";
 
 interface PhotoProps {
   photo: UserPhoto;

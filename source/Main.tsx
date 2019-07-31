@@ -63,8 +63,6 @@ class Main extends React.Component<State, Props> {
 
     return (
       <View style={styles.container}>
-        <Text style={styles.title}>Akur</Text>
-
         <ScrollView style={styles.scrollview} contentContainerStyle={styles.scrollViewContent}>
           {usersComponent}
         </ScrollView>
@@ -88,12 +86,6 @@ const styles = StyleSheet.create({
     justifyContent: "center",
 
     backgroundColor: isDebug ? "red" : "white",
-  },
-
-  title: {
-    fontSize: 35,
-
-    backgroundColor: isDebug ? "brown" : null,
   },
 
   scrollview: {

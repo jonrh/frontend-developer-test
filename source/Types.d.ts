@@ -2,7 +2,7 @@
 
 /** The main object we work with. A user of the dating app. */
 export interface User {
-  id: string; // Example: "55be3c8fc964860700ebf515"
+  id: UserID;
   info: UserInfo;
 
   // If the user forms a part of a couple this will be populated with the other User's ID
@@ -31,6 +31,9 @@ export interface UserPhoto {
   width: number; // 960
   height: number; // 1285
 }
+
+/** User identifier, example: "55be3c8fc964860700ebf515" */
+type UserID = string;
 
 /** "male" or "female" in data set of 100 users. Intentionally declared as any type of string. */
 type Gender = string;

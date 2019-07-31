@@ -18,20 +18,7 @@ class Main extends React.Component<State, Props> {
   };
 
   getUsers = () => {
-    // get20Users()
-    //   .then(users => {
-    //     this.setState({
-    //       users: users,
-    //       errorMessage: "",
-    //     });
-    //   })
-    //   .catch(error => {
-    //     this.setState({
-    //       errorMessage: `Error: ${error}`,
-    //     });
-    //   });
-
-    getLocalUsers()
+    get20Users()
       .then(users => {
         this.setState({
           users: users,
@@ -43,6 +30,20 @@ class Main extends React.Component<State, Props> {
           errorMessage: `Error: ${error}`,
         });
       });
+
+    // For debugging
+    // getLocalUsers()
+    //   .then(users => {
+    //     this.setState({
+    //       users: users,
+    //       errorMessage: "",
+    //     });
+    //   })
+    //   .catch(error => {
+    //     this.setState({
+    //       errorMessage: `Error: ${error}`,
+    //     });
+    //   });
   };
 
   componentDidMount(): void {

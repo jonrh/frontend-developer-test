@@ -2,7 +2,7 @@ import React from "react";
 import { Button, ScrollView, StyleSheet, Text, View } from "react-native";
 
 import { User } from "../Types";
-import { get20Users, getLocalUsers } from "../FeeldAPI";
+import { get20Users } from "../FeeldAPI";
 import UserView from "./UserView";
 
 interface Props {}
@@ -11,7 +11,7 @@ interface State {
   errorMessage: string;
 }
 
-class Main extends React.Component<State, Props> {
+class Main extends React.Component<Props, State> {
   state: State = {
     users: [],
     errorMessage: "",

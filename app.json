@@ -19,6 +19,8 @@
     "assetBundlePatterns": ["**/*"],
     "ios": {
       "supportsTablet": true
-    }
+    },
+    "description": "Technical assignment by Feeld, a dating app written in TypeScript, React Native and Expo.",
+    "githubUrl": "https://github.com/jonrh/frontend-developer-test"
   }
 }

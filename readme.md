@@ -1,9 +1,16 @@
-# Feeld Frontend Coding Challenge
+<p align="center">
+	<img alt="Akur logo" src="./assets/icon.png">
+</p>
 
-<a href="https://prettier.io/">
-    <img alt="code style: prettier" src="https://img.shields.io/badge/code_style-prettier-ff69b4.svg?style=flat-square"></a>
+<h2 align="center">Feeld Frontend Coding Challenge</h2>
 
-This is a [coding challenge](https://github.com/Feeld/frontend-developer-test) for the company [Feeld](https://feeld.co/). The challenge took take place between 2019-07-27 and 2019-08-03. The task was to create a dating app in [React Native](https://facebook.github.io/react-native/) and [Expo](https://expo.io/). The app is written in [TypeScript](https://www.typescriptlang.org/), a typed superset of JavaScript.
+<p align="center">
+	<a href="https://prettier.io/">
+		<img alt="code style: prettier" src="https://img.shields.io/badge/code_style-prettier-ff69b4.svg?style=flat-square">
+	</a>
+</p>
+
+This is a [coding challenge](https://github.com/Feeld/frontend-developer-test) for the company [Feeld](https://feeld.co/). The challenge took take place between 2019-07-27 and 2019-08-03. The task was to create a dating app in [React Native](https://facebook.github.io/react-native/), [Expo](https://expo.io/) and, [TypeScript](https://www.typescriptlang.org/).
 
 To quickly run this app on Android, install the [Expo app](https://play.google.com/store/apps/details?id=host.exp.exponent&referrer=www) then scan the QR code [here](https://expo.io/@jonrh/akur) or below with your with your camera:
 

@@ -1,7 +1,7 @@
 import axios, { AxiosRequestConfig } from "axios";
 import MockAdapter from "axios-mock-adapter";
 
-import users from "./users";
+import users from "./demoUsers";
 
 const URL = "https://fld-devtest-api.herokuapp.com/api/v1/users";
 const SESSION_TOKEN =

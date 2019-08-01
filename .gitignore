@@ -4,6 +4,9 @@
 # IntelliJ IDE settings folder, for example for WebStorm
 .idea/
 
+# Error log file from the Yarn package manager
+yarn-error.log
+
 # Entries from creating an Expo app
 node_modules/**/*
 .expo/*

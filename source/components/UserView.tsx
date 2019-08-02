@@ -67,7 +67,7 @@ const UsersView: React.FC<UserViewProps> = props => {
 
 const s = StyleSheet.create({
   container: {
-    flex: 2,
+    flex: 4,
     marginBottom: 20,
   },
 

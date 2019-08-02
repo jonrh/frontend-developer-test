@@ -1,11 +1,29 @@
-import axios, { AxiosRequestConfig } from "axios";
+import axios, { AxiosError, AxiosRequestConfig, Method } from "axios";
 import MockAdapter from "axios-mock-adapter";
 
 import users from "./demoUsers";
+import { User, UserDecision } from "./Types";
 
-const URL = "https://fld-devtest-api.herokuapp.com/api/v1/users";
+// Feeld Developer Test API url to get 20 random users
+const USERS_URL = "https://fld-devtest-api.herokuapp.com/api/v1/users";
+
+// This URL doesn't exist, I just list it here for the sake of example
+const DECISION_URL = "https://fld-devtest-api.herokuapp.com/api/v1/decision";
+
 const SESSION_TOKEN =
   "3TtY+AVtEJMaOPWGyEulVEgVBWZ8gqM75gag6wCcA3rJCYWMkX/ZmAOJxrZ4bPyBLJBch7VyMYD8ZCWoNPCUnJbT5M2iRWjJteGrfNhFzd+0oDbWQwiNAIdG0W9rHw7sKAAWk5uEzjs+lPykJnmy56LRwSFpoyxHC7p9G3KTQoQ=";
+
+function getAxiosConfig(method: Method, url: string, data?: any): AxiosRequestConfig {
+  return {
+    method,
+    url,
+    data,
+    timeout: 15 * 1000, // time in milliseconds
+    headers: {
+      "session-token": SESSION_TOKEN,
+    },
+  };
+}
 
 /**
  * Gets 20 random users (out of 100) from the Feeld developer test API.
@@ -39,27 +57,39 @@ const SESSION_TOKEN =
  *    "message": "Not Found"
  * }
  *
+ * Potential improvements:
+ *  + Improve the return types for the promise fulfilment. Currently Any, but it would be better
+ *    if it were User[] or something along those lines.
+ *
  */
 export function get20Users() {
-  const axiosConfig: AxiosRequestConfig = {
-    method: "get",
-    url: URL,
-    headers: {
-      "session-token": SESSION_TOKEN,
-    },
-  };
+  const axiosConfig: AxiosRequestConfig = getAxiosConfig("get", USERS_URL);
+
+  console.log("Fetching new users"); // Debug
 
   return axios(axiosConfig)
-    .then(results => results.data.data)
+    .then(response => response.data.data)
     .catch(error => console.log(error));
 }
 
 export function getLocalUsers() {
   const mock = new MockAdapter(axios);
-  mock.onGet(URL).reply(200, {
+  mock.onGet(USERS_URL).reply(200, {
     status: 200,
     data: users,
   });
 
   return get20Users();
+}
+
+/**
+ * An example of a function that would submit to the Feeld API once a user has taken a
+ * reject/skip/approve decision on another user. This is non-functional because the endpoint
+ * doesn't exist.
+ */
+export function postUserDecision(userDecision: UserDecision) {
+  const axiosConfig: AxiosRequestConfig = getAxiosConfig("post", DECISION_URL, userDecision);
+
+  // Since there isn't an endpoint to submit user decisions we just fire and forget here.
+  //return axios(axiosConfig);
 }

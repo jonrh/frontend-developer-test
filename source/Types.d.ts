@@ -27,9 +27,17 @@ export interface UserInfo {
 }
 
 export interface UserPhoto {
-  url: string; // https://res.cloudinary.com/threender/image/upload/v1419599199/58b1bf00032da7441b24c99c903d8026.jpg
+  url: string; // https://example.com/img.jpg
   width: number; // 960
   height: number; // 1285
+}
+
+export interface UserDecision {
+  // reject: not interested in chatting with given user
+  // skip: not interested at the moment, maybe at a later date
+  // approve: interested in chatting with given user
+  decision: "reject" | "skip" | "approve";
+  user: User;
 }
 
 /** User identifier, example: "55be3c8fc964860700ebf515" */

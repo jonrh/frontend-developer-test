@@ -30,7 +30,7 @@ const UserPhotos: React.FC<UserPhotosProps> = props => {
       showsButtons={false}
       horizontal={false}
       style={s.imageSwiper}
-      dot={<SwiperDots backgroundColor="rgba(255,255,255,.3)" />}
+      dot={<SwiperDots backgroundColor="rgba(255, 255, 255, .8)" />}
       activeDot={<SwiperDots backgroundColor={THEME_COLOUR_PURPLE} />}
     >
       {userPhotos}

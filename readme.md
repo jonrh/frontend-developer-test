@@ -61,6 +61,17 @@ but I opted to limit my exposure to new stuff to reduce the risk of getting stuc
   when flipping through photos. I don't really have time to address it right now. A user can flip
   through the photos, it's just that the UX isn't optimal because the photos don't loop around.
 
+## Implementaiton Notes
+
+- I'm not pleased with the user experience of flipping through photos of a single user. I used the
+  library [react-native-swiper](https://github.com/leecade/react-native-swiper). It was nice to get
+  quickly started but I found it to be somewhat buggy. When a user has multiple photos the
+  pagination would sometimes not work correctly. I'm also not happy with the UI of the pagination
+  dots. On bright coloured photos the inactive dots are barely visible. If I had more time I would
+  have made a custom pagination component that would be robust to light and dark backgrounds. For
+  example with a dark grey transparent background and then transparent light grey pagination
+  buttons.
+
 ## Files & Folders
 
 - `.expo/`: TODO

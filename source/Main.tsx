@@ -29,8 +29,8 @@ function DecideUsersScreen() {
 
 const TabNavigator = createBottomTabNavigator(
   {
-    // Chat: Chat, // Not implemented yet
     Decide: DecideUsersScreen,
+    Chat: Chat, // Not implemented yet
     Info: Info,
 
     // Debug screens

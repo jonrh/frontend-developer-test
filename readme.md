@@ -10,22 +10,32 @@
 	</a>
 </p>
 
-This is a [coding challenge](https://github.com/Feeld/frontend-developer-test) for the company [Feeld](https://feeld.co/). The challenge took take place between 2019-07-27 and 2019-08-03. The task was to create a dating app in [React Native](https://facebook.github.io/react-native/), [Expo](https://expo.io/) and, [TypeScript](https://www.typescriptlang.org/).
+This is a [coding challenge](https://github.com/Feeld/frontend-developer-test) for the company
+[Feeld](https://feeld.co/). The challenge took take place between 2019-07-27 and 2019-08-03. The
+task was to create a dating app in [React Native](https://facebook.github.io/react-native/),
+[Expo](https://expo.io/) and, [TypeScript](https://www.typescriptlang.org/).
 
-To quickly run this app on Android, install the [Expo app](https://play.google.com/store/apps/details?id=host.exp.exponent&referrer=www) then scan the QR code [here](https://expo.io/@jonrh/akur) or below with your with your camera:
+To quickly run this app on Android, install the
+[Expo app](https://play.google.com/store/apps/details?id=host.exp.exponent&referrer=www) then scan
+the QR code [here](https://expo.io/@jonrh/akur) or below with your with your camera:
 
 ![Akur Expo app QR Code](expo-published-qr-code.png)
 
 ## How to run and develop on your own computer
 
-1. Make sure you have recent version of [Node.js](https://nodejs.org/en/) installed. The latest LTS (long term support) version is a safe bet.
+1. Make sure you have recent version of [Node.js](https://nodejs.org/en/) installed. The latest
+   LTS (long term support) version is a safe bet.
 
 2. Install the [Expo client](https://expo.io/learn) command: `npm install expo-cli --global`
 3. Install the [Android](https://play.google.com/store/apps/details?id=host.exp.exponent&hl=en) or [iOS](https://itunes.apple.com/app/apple-store/id982107779) Expo app on your phone.
 4. Clone this repository to your own computer: `git clone https://github.com/jonrh/frontend-developer-test`
 5. Move into the newly cloned folder and run `yarn install` or `npm install`
 6. Run `yarn start` or `npm start`
-7. The app will be complied and a browser window will open up. Open the camera on your mobile phone (or a QR scanning app) and scan the QR code in the lower left corner of the web page that opened up. The app should then load onto your phone. This assumes your computer and your mobile phone are on the same LAN network. If they are not try selecting "Tunnel" in the lower left and scan the QR code again.
+7. The app will be complied and a browser window will open up. Open the camera on your mobile phone
+   (or a QR scanning app) and scan the QR code in the lower left corner of the web page that opened
+   up. The app should then load onto your phone. This assumes your computer and your mobile phone
+   are on the same LAN network. If they are not try selecting "Tunnel" in the lower left and scan
+   the QR code again.
 
 ## Work in progress note:
 
@@ -36,6 +46,9 @@ To quickly run this app on Android, install the [Expo app](https://play.google.c
 - I discovered that the response from the API can contain the same user multiple times in the same
   request. I created a script outside the project that called the API about 30 times and extracted
   all 100 unique user objects and put them in the `users.ts` file.
+- There is a bug in react-native-swiper. Sometimes the photo state doesn't get updated correctly
+  when flipping through photos. I don't really have time to address it right now. A user can flip
+  through the photos, it's just that the UX isn't optimal because the photos don't loop around.
 
 ## Files & Folders
 

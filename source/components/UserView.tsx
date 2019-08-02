@@ -3,7 +3,8 @@ import { Text, View, StyleSheet, Image, ScrollView } from "react-native";
 import Swiper from "react-native-swiper";
 
 import { User, UserPhoto } from "../utilities/Types";
-import { isDebug } from "../utilities/Constants";
+import { isDebug, THEME_COLOUR_PURPLE } from "../utilities/Constants";
+import { SwiperDots } from "./SwiperDots";
 
 interface PhotoProps {
   photo: UserPhoto;
@@ -25,7 +26,13 @@ const UserPhotos: React.FC<UserPhotosProps> = props => {
     : null;
 
   return (
-    <Swiper showsButtons={false} horizontal={false} style={s.imageSwiper}>
+    <Swiper
+      showsButtons={false}
+      horizontal={false}
+      style={s.imageSwiper}
+      dot={<SwiperDots backgroundColor="rgba(255,255,255,.3)" />}
+      activeDot={<SwiperDots backgroundColor={THEME_COLOUR_PURPLE} />}
+    >
       {userPhotos}
     </Swiper>
   );

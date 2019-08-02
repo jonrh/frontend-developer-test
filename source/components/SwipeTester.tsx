@@ -1,6 +1,8 @@
 import React from "react";
 import { View, Text, StyleSheet } from "react-native";
 import Swiper from "react-native-swiper";
+import { THEME_COLOUR_PURPLE } from "../utilities/Constants";
+import { SwiperDots } from "./SwiperDots";
 
 const s = StyleSheet.create({
   wrapper: {},
@@ -31,7 +33,13 @@ const s = StyleSheet.create({
 
 function Kek() {
   return (
-    <Swiper style={s.wrapper} showsButtons={false} horizontal={false}>
+    <Swiper
+      style={s.wrapper}
+      showsButtons={false}
+      horizontal={false}
+      dot={<SwiperDots backgroundColor="rgba(255,255,255,.3)" />}
+      activeDot={<SwiperDots backgroundColor={THEME_COLOUR_PURPLE} />}
+    >
       <View style={s.slide1}>
         <Text style={s.text}>Hello Swiper</Text>
       </View>

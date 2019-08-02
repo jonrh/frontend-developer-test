@@ -1,5 +1,6 @@
 import React from "react";
 import { Text, View, StyleSheet, Image, ScrollView } from "react-native";
+import Swiper from "react-native-swiper";
 
 import { User, UserPhoto } from "../Types";
 import { isDebug } from "../Constants";
@@ -10,7 +11,24 @@ interface PhotoProps {
 
 /** Displays a plain view of a user's photo */
 const Photo: React.FC<PhotoProps> = props => {
-  return <Image style={styles.image} source={{ uri: props.photo.url }} />;
+  return <Image style={s.image} source={{ uri: props.photo.url }} />;
+};
+
+interface UserPhotosProps {
+  photos?: UserPhoto[];
+}
+
+/**  */
+const UserPhotos: React.FC<UserPhotosProps> = props => {
+  const userPhotos = props.photos
+    ? props.photos.map((photo, index) => <Photo photo={photo} key={index} />)
+    : null;
+
+  return (
+    <Swiper showsButtons={false} horizontal={false} style={s.imageSwiper}>
+      {userPhotos}
+    </Swiper>
+  );
 };
 
 interface UserViewProps {
@@ -34,9 +52,11 @@ const UsersView: React.FC<UserViewProps> = props => {
   const images = photos ? photos.map((photo, i) => <Photo photo={photo} key={i} />) : null;
 
   return (
-    <View style={styles.container}>
-      <ScrollView style={{ height: 500 }}>{images}</ScrollView>
-      <Text style={styles.name}>{name}</Text>
+    <View style={s.container}>
+      {/*<ScrollView style={{ height: 500 }}>{images}</ScrollView>*/}
+      <UserPhotos photos={props.user.photos} />
+
+      <Text style={s.name}>{name}</Text>
       <Text>{`${age}y ${gender}, ${sexuality}`}</Text>
       <Text>{`About: ${about}`}</Text>
       {desiresView}
@@ -45,8 +65,9 @@ const UsersView: React.FC<UserViewProps> = props => {
   );
 };
 
-const styles = StyleSheet.create({
+const s = StyleSheet.create({
   container: {
+    flex: 2,
     marginBottom: 20,
   },
 
@@ -59,6 +80,10 @@ const styles = StyleSheet.create({
     width: null,
 
     backgroundColor: isDebug ? "blue" : null,
+  },
+
+  imageSwiper: {
+    backgroundColor: isDebug ? "orange" : null,
   },
 });
 

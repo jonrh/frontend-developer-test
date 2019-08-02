@@ -1,9 +1,9 @@
 import React from "react";
-import { Text, View } from "react-native";
 import { createBottomTabNavigator, createAppContainer } from "react-navigation";
 import { SimpleLineIcons } from "@expo/vector-icons";
 
 import Info from "./screens/Info";
+import Chat from "./screens/Chat";
 import DecideUsers from "./screens/DecideUsers";
 import ListOfUsers from "./components/ListOfUsers";
 import { SafeAreaView } from "react-native";
@@ -27,20 +27,9 @@ function DecideUsersScreen() {
   );
 }
 
-function ChatScreen() {
-  return (
-    <SafeAreaView style={{ flex: 1 }}>
-      <Text>This screen will show matches and other open chats</Text>
-      <SimpleLineIcons name="bubble" size={32} color="black" />
-      <SimpleLineIcons name="heart" size={32} color="black" />
-      <SimpleLineIcons name="exclamation" size={32} color="black" />
-    </SafeAreaView>
-  );
-}
-
 const TabNavigator = createBottomTabNavigator(
   {
-    Chat: ChatScreen,
+    // Chat: Chat, // Not implemented yet
     Decide: DecideUsersScreen,
     Info: Info,
 

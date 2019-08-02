@@ -4753,6 +4753,13 @@ react-native-svg@9.4.0:
   resolved "https://registry.yarnpkg.com/react-native-svg/-/react-native-svg-9.4.0.tgz#e428e0eae55aebd2355f1ff4f22675dad4611960"
   integrity sha512-IVJlVbS2dAPerPr927fEi4uXzrPXzlra5ddgyJXZZ2IKA2ZygyYWFZDM+vsQs+Vj20CfL8nOWszQQV57vdQgFg==
 
+react-native-swiper@^1.6.0-nightly.3:
+  version "1.6.0-nightly.3"
+  resolved "https://registry.yarnpkg.com/react-native-swiper/-/react-native-swiper-1.6.0-nightly.3.tgz#02ff0b77f821aa18c3befb61e452c8a42648ecc6"
+  integrity sha512-+NG/ECgkukfwfDvhzgzAZsKt3B4hN+gwuyK9mRCfsCELWNNsbdjwSbB2eTCAh/3MMR/Aj+VobitFuZuKtZ5RVA==
+  dependencies:
+    prop-types "^15.5.10"
+
 react-native-view-shot@2.6.0:
   version "2.6.0"
   resolved "https://registry.yarnpkg.com/react-native-view-shot/-/react-native-view-shot-2.6.0.tgz#3b23675826f67658366352c4b97b59a6aded2f43"

@@ -3,6 +3,7 @@ import { Text, View } from "react-native";
 import { createBottomTabNavigator, createAppContainer } from "react-navigation";
 import { SimpleLineIcons } from "@expo/vector-icons";
 
+import Info from "./screens/Info";
 import DecideUsers from "./screens/DecideUsers";
 import ListOfUsers from "./components/ListOfUsers";
 import { SafeAreaView } from "react-native";
@@ -37,19 +38,11 @@ function ChatScreen() {
   );
 }
 
-function SettingsScreen() {
-  return (
-    <SafeAreaView style={{ flex: 1 }}>
-      <Text>Settings</Text>
-    </SafeAreaView>
-  );
-}
-
 const TabNavigator = createBottomTabNavigator(
   {
     Chat: ChatScreen,
     Decide: DecideUsersScreen,
-    Settings: SettingsScreen,
+    Info: Info,
 
     // Debug screens
     // List: ListOfUsersScreen,
@@ -66,8 +59,8 @@ const TabNavigator = createBottomTabNavigator(
           return <SimpleLineIcons name="bubble" size={32} color={tintColor} />;
         } else if (routeName === "Decide") {
           return <SimpleLineIcons name="heart" size={32} color={tintColor} />;
-        } else if (routeName === "Settings") {
-          return <SimpleLineIcons name="exclamation" size={32} color={tintColor} />;
+        } else if (routeName === "Info") {
+          return <SimpleLineIcons name="info" size={32} color={tintColor} />;
         } else {
           // As a placeholder while I develop, show some icon for dev screens
           return <SimpleLineIcons name="emotsmile" size={32} color={tintColor} />;

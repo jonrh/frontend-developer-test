@@ -1,5 +1,5 @@
 import React from "react";
-import { Text, View, StyleSheet, Image } from "react-native";
+import { Text, View, StyleSheet, Image, ScrollView } from "react-native";
 
 import { User, UserPhoto } from "../Types";
 
@@ -13,11 +13,15 @@ const Photo: React.FC<PhotoProps> = props => {
 };
 
 interface UserViewProps {
-  user: User;
+  user?: User;
 }
 
 /** Displays a user profile. Name, age, gender, sexuality and an image for example. */
 const UsersView: React.FC<UserViewProps> = props => {
+  // A temporary fix for when the `user` prop is empty. This has the drawback of returning an empty
+  // view. This results in the layout jumping around once a user has been loaded. To be fixed later.
+  if (!props.user) return null;
+
   const { name, age, gender, sexuality, about, desires, interests } = props.user.info;
   const { photos } = props.user;
 
@@ -30,20 +34,18 @@ const UsersView: React.FC<UserViewProps> = props => {
 
   return (
     <View style={styles.container}>
+      <ScrollView style={{ height: 600 }}>{images}</ScrollView>
       <Text style={styles.name}>{name}</Text>
       <Text>{`${age}y ${gender}, ${sexuality}`}</Text>
       <Text>{`About: ${about}`}</Text>
       {desiresView}
       {interestView}
-      {images}
     </View>
   );
 };
 
 const styles = StyleSheet.create({
   container: {
-    marginLeft: 10,
-    marginRight: 10,
     marginBottom: 20,
   },
 
@@ -54,8 +56,6 @@ const styles = StyleSheet.create({
   image: {
     height: 500,
     width: null,
-
-    marginTop: 10,
   },
 });
 

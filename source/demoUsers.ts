@@ -68,6 +68,11 @@ const users: User[] = [
         width: 540,
         height: 800,
       },
+      {
+        url: "https://upload.wikimedia.org/wikipedia/commons/a/a1/Alan_Turing_Aged_16.jpg",
+        width: 1425,
+        height: 1757,
+      },
     ],
   },
 ];

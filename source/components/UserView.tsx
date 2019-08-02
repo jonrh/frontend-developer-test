@@ -2,6 +2,7 @@ import React from "react";
 import { Text, View, StyleSheet, Image, ScrollView } from "react-native";
 
 import { User, UserPhoto } from "../Types";
+import { isDebug } from "../Constants";
 
 interface PhotoProps {
   photo: UserPhoto;
@@ -56,6 +57,8 @@ const styles = StyleSheet.create({
   image: {
     height: 500,
     width: null,
+
+    backgroundColor: isDebug ? "blue" : null,
   },
 });
 

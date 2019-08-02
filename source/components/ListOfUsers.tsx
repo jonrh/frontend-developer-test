@@ -4,6 +4,7 @@ import { Button, ScrollView, StyleSheet, Text, View } from "react-native";
 import { User } from "../Types";
 import { get20Users } from "../FeeldAPI";
 import UserView from "./UserView";
+import { isDebug } from "../Constants";
 
 interface Props {}
 interface State {
@@ -61,8 +62,6 @@ class Main extends React.Component<Props, State> {
     );
   }
 }
-
-const isDebug = false;
 
 const styles = StyleSheet.create({
   container: {

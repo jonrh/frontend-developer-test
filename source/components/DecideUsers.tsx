@@ -4,6 +4,7 @@ import { Text, View, StyleSheet, TouchableOpacity } from "react-native";
 import users from "../demoUsers";
 import { User, UserID } from "../Types";
 import UsersView from "./UserView";
+import { isDebug } from "../Constants";
 
 interface ButtonProps {
   buttonText: string; // The text label on the button
@@ -72,8 +73,6 @@ class DecideUsers extends React.Component<Props, State> {
     );
   }
 }
-
-const isDebug = false;
 
 const s = StyleSheet.create({
   container: {

@@ -1,10 +1,10 @@
 import React from "react";
 import { Text, View, StyleSheet, TouchableOpacity } from "react-native";
 
-import { User, UserID } from "../Types";
-import UsersView from "./UserView";
-import { get20Users, postUserDecision } from "../FeeldAPI";
-import { isDebug } from "../Constants";
+import { User, UserID } from "../utilities/Types";
+import UsersView from "../components/UserView";
+import { get20Users, postUserDecision } from "../utilities/FeeldAPI";
+import { isDebug } from "../utilities/Constants";
 
 /** How many users we want to have ready locally before we request more users from the API */
 const MIN_USER_POOL_SIZE = 3;

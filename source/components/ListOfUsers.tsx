@@ -1,10 +1,10 @@
 import React from "react";
 import { Button, ScrollView, StyleSheet, Text, View } from "react-native";
 
-import { User } from "../Types";
-import { get20Users } from "../FeeldAPI";
+import { User } from "../utilities/Types";
+import { get20Users } from "../utilities/FeeldAPI";
 import UserView from "./UserView";
-import { isDebug } from "../Constants";
+import { isDebug } from "../utilities/Constants";
 
 interface Props {}
 interface State {

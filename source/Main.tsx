@@ -3,12 +3,12 @@ import { Text, View } from "react-native";
 import { createBottomTabNavigator, createAppContainer } from "react-navigation";
 import { SimpleLineIcons } from "@expo/vector-icons";
 
-import DecideUsers from "./components/DecideUsers";
+import DecideUsers from "./screens/DecideUsers";
 import ListOfUsers from "./components/ListOfUsers";
 import { SafeAreaView } from "react-native";
 import SwipeTester from "./components/SwipeTester";
 import SwipeTester2 from "./components/SwipeTester2";
-import { THEME_COLOUR_PURPLE } from "./Constants";
+import { THEME_COLOUR_PURPLE } from "./utilities/Constants";
 
 function ListOfUsersScreen() {
   return (
@@ -52,9 +52,9 @@ const TabNavigator = createBottomTabNavigator(
     Settings: SettingsScreen,
 
     // Debug screens
-    List: ListOfUsersScreen,
-    Swipe1: SwipeTester,
-    Swipe2: SwipeTester2,
+    // List: ListOfUsersScreen,
+    // Swipe1: SwipeTester,
+    // Swipe2: SwipeTester2,
   },
   {
     defaultNavigationOptions: ({ navigation }) => ({

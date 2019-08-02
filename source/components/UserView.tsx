@@ -2,8 +2,8 @@ import React from "react";
 import { Text, View, StyleSheet, Image, ScrollView } from "react-native";
 import Swiper from "react-native-swiper";
 
-import { User, UserPhoto } from "../Types";
-import { isDebug } from "../Constants";
+import { User, UserPhoto } from "../utilities/Types";
+import { isDebug } from "../utilities/Constants";
 
 interface PhotoProps {
   photo: UserPhoto;

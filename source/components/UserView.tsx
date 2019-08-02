@@ -35,7 +35,7 @@ const UsersView: React.FC<UserViewProps> = props => {
 
   return (
     <View style={styles.container}>
-      <ScrollView style={{ height: 600 }}>{images}</ScrollView>
+      <ScrollView style={{ height: 500 }}>{images}</ScrollView>
       <Text style={styles.name}>{name}</Text>
       <Text>{`${age}y ${gender}, ${sexuality}`}</Text>
       <Text>{`About: ${about}`}</Text>
@@ -55,7 +55,7 @@ const styles = StyleSheet.create({
   },
 
   image: {
-    height: 500,
+    height: 400,
     width: null,
 
     backgroundColor: isDebug ? "blue" : null,

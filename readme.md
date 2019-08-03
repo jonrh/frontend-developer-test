@@ -83,6 +83,24 @@ but I opted to limit my exposure to new stuff to reduce the risk of getting stuc
   have made a custom pagination component that would be robust to light and dark backgrounds. For
   example with a dark grey transparent background and then transparent light grey pagination
   buttons.
+- I spent quite a bit of time learning and playing with
+  [Animated](https://facebook.github.io/react-native/docs/animated),
+  [Reanimated](https://github.com/kmagiera/react-native-reanimated),
+  [PanResponder](https://facebook.github.io/react-native/docs/panresponder.html), and
+  [Gesture Handler](https://kmagiera.github.io/react-native-gesture-handler/) in an effort to
+  implement swiping of users. I learned a lot but needed a lot more time to be able to create
+  a user experience I would be willing to showcase. I based my swipe and gesture handling from a
+  [React Native EU workshop](https://github.com/FormidableLabs/react-native-animation-workshop) I
+  attended in 2017.
+- I struggled quite a bit with gesture handlers competing with one another. In the current
+  implementation I have two competing gesture handlers. Swipe left/right to dislike/like a user
+  and tab a photo to flip through (if the user has multiple photos). When tapping photos the
+  `onPress()` event sometimes wouldn't fire. I'm guessing because the swipe gesture handler stole
+  focus. I have renewed respect for how complicated this can get! As a hack I opted for the handler
+  method
+  [`onPressIn()`](https://facebook.github.io/react-native/docs/touchablewithoutfeedback#onpressin).
+  It works more reliably but the user experience is not ideal. Every time a swipe is performed on a
+  user with multiple photos the next photo is toggled in.
 
 ## Logo Design
 

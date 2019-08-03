@@ -61,6 +61,12 @@ but I opted to limit my exposure to new stuff to reduce the risk of getting stuc
   when flipping through photos. I don't really have time to address it right now. A user can flip
   through the photos, it's just that the UX isn't optimal because the photos don't loop around.
 
+## Bugs
+
+- \<SafeWorkingArea> doesn't seem to work on Android as I expected. The app reaches all the way to
+  the top of the screen and extends under the toolbar. This behaviour actually looks pretty nice on
+  the Decision screen (photos reach all at the way to the top) but not on the Info and Chat screens.
+
 ## Implementaiton Notes
 
 - I'm not pleased with the user experience of flipping through photos of a single user. I used the

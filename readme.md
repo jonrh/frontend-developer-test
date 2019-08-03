@@ -98,7 +98,8 @@ main themes I had in mind were:
 </p>
 
 First I began [exploring](https://www.matematica.pt/en/useful/list-curves.php) and
-[looking](http://paulbourke.net/geometry/) for the most [erotic mathematical curves I could find.
+[looking](http://paulbourke.net/geometry/) for the most
+[erotic mathematical curves](https://faishasj.github.io/spirograph/) I could find.
 After some browsing I found these the most pleasing:
 
 <p align="center">

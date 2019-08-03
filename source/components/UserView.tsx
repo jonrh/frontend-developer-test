@@ -42,31 +42,65 @@ const UserPhotos: React.FC<UserPhotosProps> = props => {
   );
 };
 
+const Desires: React.FC<{ desires?: string[] }> = props => {
+  // If the user doesn't have any desires, don't display an empty text label
+  if (!props.desires) return null;
+
+  return (
+    <Text>
+      <Text style={s.bold}>Desires</Text>: {props.desires.join(", ")}
+    </Text>
+  );
+};
+
+const Interests: React.FC<{ interests?: string[] }> = props => {
+  // If the user doesn't have any interests, don't display an empty text label
+  if (!props.interests) return null;
+
+  return (
+    <Text>
+      <Text style={s.bold}>Interests</Text>: {props.interests.join(", ")}
+    </Text>
+  );
+};
+
 interface UserViewProps {
   user?: User;
 }
 
-/** Displays a user profile. Name, age, gender, sexuality and an image for example. */
+/** Displays a user profile. Photo/s, name, age, gender, sexuality, about, desires, interests. */
 const UsersView: React.FC<UserViewProps> = props => {
   // A temporary fix for when the `user` prop is empty. This has the drawback of returning an empty
   // view. This results in the layout jumping around once a user has been loaded. To be fixed later.
   if (!props.user) return null;
 
   const { name, age, gender, sexuality, about, desires, interests } = props.user.info;
+  const { associated } = props.user;
 
-  // If desires or interests arrays are defined display it. Otherwise don't show anything.
-  const desiresView = desires ? <Text>{`Desires: ${desires.join(", ")}`}</Text> : null;
-  const interestView = interests ? <Text>{`Interets: ${interests.join(", ")}`}</Text> : null;
+  let userName = name;
+  let userAgeGenderSexuality = `${age}y ${gender} ${sexuality}`;
+
+  // If there is an associated user (couple), append it to the name and info labels
+  if (associated) {
+    userName += ` & ${associated.name}`;
+    userAgeGenderSexuality += `, ${associated.age}y ${associated.gender} ${associated.sexuality}`;
+  }
 
   return (
     <View style={s.container}>
       <UserPhotos photos={props.user.photos} />
 
-      <Text style={s.name}>{name}</Text>
-      <Text>{`${age}y ${gender}, ${sexuality}`}</Text>
-      <Text>{`About: ${about}`}</Text>
-      {desiresView}
-      {interestView}
+      <View style={s.aboutContainer}>
+        <Text style={s.name}>{userName}</Text>
+        <Text>{userAgeGenderSexuality}</Text>
+
+        <Text style={s.aboutDescription}>
+          <Text style={s.bold}>About</Text>: {about}
+        </Text>
+
+        <Desires desires={desires} />
+        <Interests interests={interests} />
+      </View>
     </View>
   );
 };
@@ -75,10 +109,27 @@ const s = StyleSheet.create({
   container: {
     flex: 4,
     marginBottom: 20,
+
+    backgroundColor: isDebug ? "brown" : null,
+  },
+
+  aboutContainer: {
+    // flex: 0.5,
+    marginLeft: 20,
+    marginRight: 20,
+  },
+
+  aboutDescription: {
+    marginTop: 20,
+  },
+
+  bold: {
+    fontWeight: "bold",
   },
 
   name: {
-    fontSize: 25,
+    fontSize: 23,
+    fontWeight: "300",
   },
 
   image: {

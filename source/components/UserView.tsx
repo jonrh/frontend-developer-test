@@ -1,46 +1,9 @@
 import React from "react";
-import { Text, View, StyleSheet, Image, ScrollView } from "react-native";
-import Swiper from "react-native-swiper";
+import { Text, View, StyleSheet, Image, Dimensions } from "react-native";
 
 import { User, UserPhoto } from "../utilities/Types";
-import { isDebug, THEME_COLOUR_PURPLE } from "../utilities/Constants";
-import { SwiperDots } from "./SwiperDots";
-
-interface PhotoProps {
-  photo: UserPhoto;
-}
-
-/** Displays a plain view of a single user photo */
-const Photo: React.FC<PhotoProps> = props => {
-  return <Image style={s.image} source={{ uri: props.photo.url }} />;
-};
-
-interface UserPhotosProps {
-  photos?: UserPhoto[];
-}
-
-/**
- * Displays photos of a user. If the user has more than one photo they can be flipped through with
- * a up/down swipe motion. The <Swiper> component also provides a pagination component to indicate
- * how many photos there are.
- */
-const UserPhotos: React.FC<UserPhotosProps> = props => {
-  const userPhotos = props.photos
-    ? props.photos.map((photo, index) => <Photo photo={photo} key={index} />)
-    : null;
-
-  return (
-    <Swiper
-      showsButtons={false}
-      horizontal={false}
-      style={s.imageSwiper}
-      dot={<SwiperDots backgroundColor="rgba(255, 255, 255, .8)" />}
-      activeDot={<SwiperDots backgroundColor={THEME_COLOUR_PURPLE} />}
-    >
-      {userPhotos}
-    </Swiper>
-  );
-};
+import { isDebug } from "../utilities/Constants";
+import UserPhotos from "./UserPhotos";
 
 /** "Title: content" text label with the title in bold text. Returns null if content is empty. */
 const Description: React.FC<{ labelTitle: string; labelContent?: string }> = props => {
@@ -59,7 +22,7 @@ interface UserViewProps {
 }
 
 /** Displays a user profile. Photo/s, name, age, gender, sexuality, about, desires, interests. */
-const UsersView: React.FC<UserViewProps> = props => {
+const UsersView2: React.FC<UserViewProps> = props => {
   // A temporary fix for when the `user` prop is empty. This has the drawback of returning an empty
   // view. This results in the layout jumping around once a user has been loaded. To be fixed later.
   if (!props.user) return null;
@@ -96,10 +59,11 @@ const UsersView: React.FC<UserViewProps> = props => {
 
 const s = StyleSheet.create({
   container: {
-    flex: 4,
+    flex: 1,
     marginBottom: 20,
-
-    backgroundColor: isDebug ? "brown" : null,
+    width: Dimensions.get("window").width,
+    height: Dimensions.get("window").height,
+    backgroundColor: "white",
   },
 
   aboutContainer: {
@@ -122,7 +86,7 @@ const s = StyleSheet.create({
   },
 
   image: {
-    height: 400,
+    height: Dimensions.get("window").height * 0.61,
     width: null,
 
     backgroundColor: isDebug ? "blue" : null,
@@ -133,4 +97,4 @@ const s = StyleSheet.create({
   },
 });
 
-export default UsersView;
+export default UsersView2;

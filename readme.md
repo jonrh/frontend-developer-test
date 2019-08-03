@@ -93,10 +93,6 @@ main themes I had in mind were:
 - simple round geometrical shape
 - bright colours I wouldn't normally use
 
-<p align="center">
-	<img alt="Akur logo" src="./assets/icon.png">
-</p>
-
 First I began [exploring](https://www.matematica.pt/en/useful/list-curves.php) and
 [looking](http://paulbourke.net/geometry/) for the most
 [erotic mathematical curves](https://faishasj.github.io/spirograph/) I could find.

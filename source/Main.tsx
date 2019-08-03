@@ -3,7 +3,6 @@ import { createBottomTabNavigator, createAppContainer, BottomTabBar } from "reac
 import { SimpleLineIcons } from "@expo/vector-icons";
 
 import Info from "./screens/Info";
-import Chat from "./screens/Chat";
 import DecideUsers from "./screens/DecideUsers";
 import ListOfUsers from "./components/ListOfUsers";
 import { SafeAreaView, StyleSheet } from "react-native";
@@ -30,7 +29,6 @@ function DecideUsersScreen() {
 const TabNavigator = createBottomTabNavigator(
   {
     Decide: DecideUsersScreen,
-    // Chat: Chat, // Not implemented yet
     Info: Info,
 
     // Debug screens

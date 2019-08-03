@@ -1,26 +1,16 @@
 import React from "react";
-import { Text, View, StyleSheet, TouchableOpacity } from "react-native";
+import { View, StyleSheet, Animated, Dimensions, PanResponder } from "react-native";
 
 import { User, UserID } from "../utilities/Types";
-import UsersView from "../components/UserView";
 import { get20Users, postUserDecision } from "../utilities/FeeldAPI";
 import { isDebug } from "../utilities/Constants";
+import UsersView2 from "../components/UserView2";
 
 /** How many users we want to have ready locally before we request more users from the API */
 const MIN_USER_POOL_SIZE = 3;
 
-interface ButtonProps {
-  buttonText: string; // The text label on the button
-  onPress: () => void; // The function that will be invoked once the button is pressed
-}
-
-const Button: React.FC<ButtonProps> = props => {
-  return (
-    <TouchableOpacity style={s.button} onPress={props.onPress}>
-      <Text style={s.buttonText}>{props.buttonText}</Text>
-    </TouchableOpacity>
-  );
-};
+const SWIPE_DISTANCE = Dimensions.get("window").width;
+const SWIPE_THRESHOLD = SWIPE_DISTANCE / 3;
 
 interface Props {}
 interface State {
@@ -33,17 +23,35 @@ interface State {
   userPool: User[];
 }
 
-/**
- * A view that displays a person the user can indicate if they have an interest in or not. By
- * swiping left the user indicates they do not have an interest, by swiping right they would like
- * to proceed to potentially opening a dialog with that user. It's also possible to skip,
- * essentially hiding the user.
- */
-class DecideUsers extends React.Component<Props, State> {
+class Vote extends React.Component<Props, State> {
   state: State = {
     decidedUserIDs: [],
     userPool: [],
   };
+
+  position = new Animated.Value(0);
+  panResponder = PanResponder.create({
+    onStartShouldSetPanResponder: () => true,
+    onMoveShouldSetPanResponder: () => true,
+    onPanResponderMove: Animated.event([null, { dx: this.position }]),
+    onPanResponderRelease: (e, { dx, vx }) => {
+      if (Math.abs(dx) > SWIPE_THRESHOLD) {
+        const direction = dx > 0 ? 1 : -1;
+        const velocity = Math.max(2.5, Math.abs(vx)) * direction;
+        Animated.decay(this.position, {
+          velocity,
+          deceleration: 0.985,
+          useNativeDriver: true,
+        }).start(this.moveToNext);
+      } else {
+        Animated.spring(this.position, {
+          toValue: 0,
+          friction: 4,
+          useNativeDriver: true,
+        }).start();
+      }
+    },
+  });
 
   componentDidMount(): void {
     this.getUsers();
@@ -68,6 +76,35 @@ class DecideUsers extends React.Component<Props, State> {
       });
   };
 
+  nopePressed = () => {
+    Animated.spring(this.position, {
+      friction: 11,
+      tension: 60,
+      toValue: -SWIPE_DISTANCE,
+      useNativeDriver: true,
+    }).start(this.moveToNext);
+  };
+
+  yepPressed = () => {
+    Animated.spring(this.position, {
+      friction: 11,
+      tension: 60,
+      toValue: SWIPE_DISTANCE,
+      useNativeDriver: true,
+    }).start(this.moveToNext);
+  };
+
+  moveToNext = ({ finished }) => {
+    // Don't do anything if the animation hasn't finished
+    if (!finished) return;
+
+    this.removeCurrentUserFromPool();
+  };
+
+  resetPosition = () => {
+    this.position.setValue(0);
+  };
+
   /** The user that is currently being decided on (reject/skip/approve) */
   getCurrentUser = () => {
     return this.state.userPool[0];
@@ -79,20 +116,21 @@ class DecideUsers extends React.Component<Props, State> {
   };
 
   removeCurrentUserFromPool = () => {
-    this.setState(state => {
-      const decidedUserID: UserID = state.userPool[0].id; // The user we just took a decision on
+    this.setState(previousState => {
+      // The user we just took a decision on
+      const decidedUserID: UserID = previousState.userPool[0].id;
 
       return {
         // Add the ID of the decided user to the list of IDs that have been decided
-        decidedUserIDs: [...state.decidedUserIDs, decidedUserID],
+        decidedUserIDs: [...previousState.decidedUserIDs, decidedUserID],
 
         // Remove the user from the pool. Note that this has the beneficial side effect to remove
         // duplicate objects of the same user. The Feeld API some times returns the same user
         // multiple times in the response of 20 users. This means we avoid displaying the same user
         // again for a decision.
-        userPool: state.userPool.filter(user => user.id !== decidedUserID),
+        userPool: previousState.userPool.filter(user => user.id !== decidedUserID),
       };
-    });
+    }, this.resetPosition);
 
     if (this.state.userPool.length <= MIN_USER_POOL_SIZE) {
       this.getUsers();
@@ -125,25 +163,50 @@ class DecideUsers extends React.Component<Props, State> {
   render() {
     // The user that is currently being decided on (reject/skip/approve)
     const currentUser = this.getCurrentUser();
+    const nextUser = this.getNextUser();
 
-    const AllCaughtUp = (
-      <View>
-        <Text>All caught up 🎉</Text>
-        <Text>Please check back later</Text>
-      </View>
-    );
+    // IDs of the current and next user, fall back to default values if not loaded yet
+    // Used to distinguish/separate animated views
+    const currentUserID = (currentUser && currentUser.id) || 0;
+    const nextUserID = (nextUser && nextUser.id) || 1;
+
+    const translateX = this.position;
+
+    const rotate = Animated.divide(this.position, SWIPE_DISTANCE).interpolate({
+      inputRange: [-1, +1],
+      outputRange: ["-30deg", "30deg"],
+      extrapolate: "clamp",
+    });
+
+    const animatedStyle = {
+      transform: [{ translateX }, { rotate }],
+    };
+
+    const nextScale = Animated.divide(this.position, SWIPE_DISTANCE).interpolate({
+      inputRange: [-1, -0.2, 0.2, 1],
+      outputRange: [1, 0.75, 0.75, 1],
+      extrapolate: "clamp",
+    });
+
+    const nextCardStyle = {
+      transform: [{ scale: nextScale }],
+    };
 
     return (
       <View style={s.container}>
-        <UsersView user={currentUser} />
+        {/* The next user ready waiting underneath */}
+        <Animated.View key={nextUserID} style={[s.card, nextCardStyle]}>
+          <UsersView2 user={nextUser} />
+        </Animated.View>
 
-        {this.state.userPool.length === 0 ? AllCaughtUp : null}
-
-        <View style={s.buttonGroup}>
-          <Button buttonText={"👎"} onPress={this.reject} />
-          <Button buttonText={"skip"} onPress={this.skip} />
-          <Button buttonText={"👍"} onPress={this.approve} />
-        </View>
+        {/* The current user in view */}
+        <Animated.View
+          key={currentUserID}
+          style={[s.card, animatedStyle]}
+          {...this.panResponder.panHandlers}
+        >
+          <UsersView2 user={currentUser} />
+        </Animated.View>
       </View>
     );
   }
@@ -152,29 +215,14 @@ class DecideUsers extends React.Component<Props, State> {
 const s = StyleSheet.create({
   container: {
     flex: 1,
+    alignItems: "center",
 
     backgroundColor: isDebug ? "red" : null,
   },
 
-  buttonGroup: {
-    flex: 1,
-    flexDirection: "row",
-    alignItems: "center",
-    justifyContent: "center",
-
-    backgroundColor: isDebug ? "green" : null,
-  },
-
-  button: {
-    flex: 1,
-    alignItems: "center",
-
-    backgroundColor: isDebug ? "brown" : null,
-  },
-
-  buttonText: {
-    fontSize: 40,
+  card: {
+    position: "absolute",
   },
 });
 
-export default DecideUsers;
+export default Vote;

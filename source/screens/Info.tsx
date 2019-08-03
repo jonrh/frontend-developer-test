@@ -1,6 +1,6 @@
 import React from "react";
 import { Text, SafeAreaView, Image, StyleSheet, View, TouchableOpacity } from "react-native";
-import { SimpleLineIcons } from "@expo/vector-icons";
+import { isDebug } from "../utilities/Constants";
 
 const logo = require("../../assets/logo1024x1024.png");
 
@@ -10,20 +10,15 @@ const Info: React.FC<Props> = props => {
   return (
     <SafeAreaView style={s.container}>
       <Text style={s.headerLabel}>Akur</Text>
+
       <Image source={logo} style={s.logo} />
 
-      <View style={{ flex: 1 }}>
-        <Text>This app is a coding challenge for Feeld.</Text>
-        <Text>
+      <View>
+        <Text style={s.centerText}>This app is a coding challenge for Feeld.</Text>
+        <Text style={s.centerText}>
           <Text style={s.bold}>Author</Text>: Jón Rúnar Helgason, jonrh.is
         </Text>
       </View>
-
-      <TouchableOpacity style={s.button}>
-        <Text style={s.buttonText}>
-          Reset ratings <SimpleLineIcons name="heart" size={30} color="#232323" />
-        </Text>
-      </TouchableOpacity>
     </SafeAreaView>
   );
 };
@@ -33,38 +28,31 @@ const s = StyleSheet.create({
     flex: 1,
     flexDirection: "column",
     alignItems: "center",
-    justifyContent: "space-between",
+    justifyContent: "center",
+
+    backgroundColor: isDebug ? "brown" : null,
   },
 
   headerLabel: {
     fontSize: 50,
     fontWeight: "200",
+
+    backgroundColor: isDebug ? "blue" : null,
   },
 
   logo: {
     width: 250,
     height: 250,
+
+    backgroundColor: isDebug ? "red" : null,
   },
 
   bold: {
     fontWeight: "bold",
   },
 
-  button: {
-    flex: 0.4,
-    alignItems: "center",
-    justifyContent: "center",
-
-    width: "100%",
-    marginBottom: 40,
-
-    backgroundColor: "#f072ff",
-  },
-
-  buttonText: {
-    fontSize: 40,
-    fontWeight: "200",
-    color: "#232323",
+  centerText: {
+    textAlign: "center",
   },
 });
 

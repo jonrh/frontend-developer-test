@@ -75,6 +75,38 @@ const users: User[] = [
       },
     ],
   },
+  {
+    id: "55be3c8fc964860700ebf500",
+    info: {
+      age: 85,
+      type: "couple",
+      gender: "female",
+      sexuality: "lesbian",
+      name: "Audre Lorde",
+      about: "Lesbian, mother, warrior, poet.",
+      desires: ["Civil rights"],
+      interests: ["Poems", "Feminism"],
+    },
+    associated: {
+      age: 85,
+      gender: "female",
+      sexuality: "lesbian",
+      name: "Gloria I. Joseph",
+    },
+    photos: [
+      {
+        url: "https://upload.wikimedia.org/wikipedia/commons/c/c2/Audre_Lorde.jpg",
+        width: 993,
+        height: 1489,
+      },
+      {
+        url:
+          "https://upload.wikimedia.org/wikipedia/commons/e/e6/Audre_Lorde%2C_Meridel_Lesueur%2C_Adrienne_Rich_1980.jpg",
+        width: 1280,
+        height: 960,
+      },
+    ],
+  },
 ];
 
 export default users;

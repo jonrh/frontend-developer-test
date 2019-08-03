@@ -12,6 +12,10 @@ interface State {
   errorMessage: string;
 }
 
+/**
+ * A throwaway component I created to help me wrap my head around what sort of data I was working
+ * with. It is not used in the app.
+ **/
 class Main extends React.Component<Props, State> {
   state: State = {
     users: [],

@@ -5,7 +5,10 @@ interface Props {
   backgroundColor: string; // "black", "#000000", "rgba(255,255,255,.3)", etc
 }
 
-/** Custom pagination dots that appear if a user has more than one photo */
+/**
+ * Custom pagination dots that appear if a user has more than one photo. No longer used, created
+ * for when the <Swiper> component was in use.
+ */
 export function SwiperDots(props: Props) {
   return (
     <View

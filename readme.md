@@ -151,6 +151,7 @@ just played around a little bit with gradients and drop shadows. Here are the fi
   running the command `yarn install` or `npm install`. This folder should not be modified.
 - `source/`: Contains the source code of the app.
   - `components/`: React components that should aim to be re-usable
+  - `graveyard/`: Components I used when developing and prototyping solutions.
   - `screens/`: High level views of the app, each file is a screen in the app
   - `utilities/`: Other various TypeScript code, for example types, API code, etc.
   - `Main.tsx`: The root component of the app.

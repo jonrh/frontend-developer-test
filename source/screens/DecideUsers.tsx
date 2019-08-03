@@ -23,6 +23,10 @@ interface State {
   userPool: User[];
 }
 
+/**
+ * A view where the decisions/votes are taken on other users, dislike/skip/like. If we swipe left
+ * we reject (dislike) a user. If we swipe right we approve (like) a user.
+ */
 class DecideUsers extends React.Component<Props, State> {
   state: State = {
     decidedUserIDs: [],

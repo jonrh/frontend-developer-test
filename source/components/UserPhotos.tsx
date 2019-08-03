@@ -12,6 +12,7 @@ interface PaginationProps {
   photoCount: number; // how many photos are there in total
 }
 
+/** Displays a "1/3" pagination at the bottom of an image. */
 const Pagination: React.FC<PaginationProps> = props => {
   // If there is only one photo then there is no need to display pagination
   if (props.photoCount === 1) return null;
@@ -21,15 +22,6 @@ const Pagination: React.FC<PaginationProps> = props => {
       <Text style={s.text}>{`${props.photoIndex + 1}/${props.photoCount}`}</Text>
     </View>
   );
-};
-
-interface PhotoProps {
-  photo: UserPhoto;
-}
-
-/** Displays a plain view of a single user photo */
-const Photo: React.FC<PhotoProps> = props => {
-  return <Image style={s.image} source={{ uri: props.photo.url }} />;
 };
 
 interface Props {
@@ -42,7 +34,8 @@ interface State {
 
 /**
  * Displays photos of a user. If the user has more than one photo they can be flipped through by
- * tabbing on them.
+ * tabbing on them. A 1/3 pagination is displayed if there are more than one photo. The app logo is
+ * displayed if the user has no photos.
  */
 class UserPhotos extends React.Component<Props, State> {
   state: State = {
@@ -76,6 +69,7 @@ class UserPhotos extends React.Component<Props, State> {
     // If there is only one image just display it, no need for pagination or TouchableOpacity
     if (this.props.photos.length === 1) return image;
 
+    // We have more than one photo, turn the photo into a button to flip through, display pagination
     return (
       <TouchableOpacity onPressIn={this.onPhotoPress} activeOpacity={0.8}>
         <Image style={s.image} source={{ uri: currentPhoto.url }} />

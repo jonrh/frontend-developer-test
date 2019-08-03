@@ -23,7 +23,7 @@ interface State {
   userPool: User[];
 }
 
-class Vote extends React.Component<Props, State> {
+class DecideUsers extends React.Component<Props, State> {
   state: State = {
     decidedUserIDs: [],
     userPool: [],
@@ -225,4 +225,4 @@ const s = StyleSheet.create({
   },
 });
 
-export default Vote;
+export default DecideUsers;

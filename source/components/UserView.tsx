@@ -42,24 +42,14 @@ const UserPhotos: React.FC<UserPhotosProps> = props => {
   );
 };
 
-const Desires: React.FC<{ desires?: string[] }> = props => {
-  // If the user doesn't have any desires, don't display an empty text label
-  if (!props.desires) return null;
+/** "Title: content" text label with the title in bold text. Returns null if content is empty. */
+const Description: React.FC<{ labelTitle: string; labelContent?: string }> = props => {
+  // Don't display an empty label if the content is null/undefined or the empty string
+  if (!props.labelContent || props.labelContent.length === 0) return null;
 
   return (
     <Text>
-      <Text style={s.bold}>Desires</Text>: {props.desires.join(", ")}
-    </Text>
-  );
-};
-
-const Interests: React.FC<{ interests?: string[] }> = props => {
-  // If the user doesn't have any interests, don't display an empty text label
-  if (!props.interests) return null;
-
-  return (
-    <Text>
-      <Text style={s.bold}>Interests</Text>: {props.interests.join(", ")}
+      <Text style={s.bold}>{props.labelTitle}</Text>: {props.labelContent}
     </Text>
   );
 };
@@ -78,12 +68,12 @@ const UsersView: React.FC<UserViewProps> = props => {
   const { associated } = props.user;
 
   let userName = name;
-  let userAgeGenderSexuality = `${age}y ${gender} ${sexuality}`;
+  let userAgeGenderSexuality = `${age}y ${sexuality} ${gender}`;
 
   // If there is an associated user (couple), append it to the name and info labels
   if (associated) {
     userName += ` & ${associated.name}`;
-    userAgeGenderSexuality += `, ${associated.age}y ${associated.gender} ${associated.sexuality}`;
+    userAgeGenderSexuality += `, ${associated.age}y ${associated.sexuality} ${associated.gender}`;
   }
 
   return (
@@ -94,12 +84,11 @@ const UsersView: React.FC<UserViewProps> = props => {
         <Text style={s.name}>{userName}</Text>
         <Text>{userAgeGenderSexuality}</Text>
 
-        <Text style={s.aboutDescription}>
-          <Text style={s.bold}>About</Text>: {about}
-        </Text>
-
-        <Desires desires={desires} />
-        <Interests interests={interests} />
+        <View style={s.moreInfo}>
+          <Description labelTitle="About" labelContent={about} />
+          <Description labelTitle="Desires" labelContent={desires && desires.join(", ")} />
+          <Description labelTitle="Interests" labelContent={interests && interests.join(", ")} />
+        </View>
       </View>
     </View>
   );
@@ -114,12 +103,12 @@ const s = StyleSheet.create({
   },
 
   aboutContainer: {
-    // flex: 0.5,
+    marginTop: 20,
     marginLeft: 20,
     marginRight: 20,
   },
 
-  aboutDescription: {
+  moreInfo: {
     marginTop: 20,
   },
 

@@ -10,7 +10,7 @@ interface PhotoProps {
   photo: UserPhoto;
 }
 
-/** Displays a plain view of a user's photo */
+/** Displays a plain view of a single user photo */
 const Photo: React.FC<PhotoProps> = props => {
   return <Image style={s.image} source={{ uri: props.photo.url }} />;
 };
@@ -19,7 +19,11 @@ interface UserPhotosProps {
   photos?: UserPhoto[];
 }
 
-/**  */
+/**
+ * Displays photos of a user. If the user has more than one photo they can be flipped through with
+ * a up/down swipe motion. The <Swiper> component also provides a pagination component to indicate
+ * how many photos there are.
+ */
 const UserPhotos: React.FC<UserPhotosProps> = props => {
   const userPhotos = props.photos
     ? props.photos.map((photo, index) => <Photo photo={photo} key={index} />)
@@ -49,18 +53,13 @@ const UsersView: React.FC<UserViewProps> = props => {
   if (!props.user) return null;
 
   const { name, age, gender, sexuality, about, desires, interests } = props.user.info;
-  const { photos } = props.user;
 
   // If desires or interests arrays are defined display it. Otherwise don't show anything.
   const desiresView = desires ? <Text>{`Desires: ${desires.join(", ")}`}</Text> : null;
   const interestView = interests ? <Text>{`Interets: ${interests.join(", ")}`}</Text> : null;
 
-  // Display all of the user's images one after another if they exist.
-  const images = photos ? photos.map((photo, i) => <Photo photo={photo} key={i} />) : null;
-
   return (
     <View style={s.container}>
-      {/*<ScrollView style={{ height: 500 }}>{images}</ScrollView>*/}
       <UserPhotos photos={props.user.photos} />
 
       <Text style={s.name}>{name}</Text>

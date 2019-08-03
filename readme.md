@@ -44,12 +44,13 @@ the QR code [here](https://expo.io/@jonrh/akur) or below with your with your cam
 
 For **state management** I kept it deliberately simple: React
 [`setState()`](https://reactjs.org/docs/react-component.html#setstate). In previous apps I have
-usually used [Redux](https://redux.js.org/). I don't particularly like it but the benefits
-(reliability, predictability) start to outweigh the cost (boilerplate, setup cost) once the app has
-grown to a certain size or complexity. I usually prefer `setState()` until it starts to become
-painful to pass props and update functions down the chain (3-5 levels). I would have liked to try
-to use [useState hooks](https://reactjs.org/docs/hooks-reference.html#usestate) for this project
-but I opted to limit my exposure to new stuff to reduce the risk of getting stuck.
+usually used [Redux](https://redux.js.org/). I tend to avoid it for small apps like this one but
+use it when the benefits (reliability, predictability) start to outweigh the cost (boilerplate,
+setup cost) once the app has grown to a certain size or complexity. I usually prefer `setState()`
+until it starts to become painful to pass props and update functions down the chain (3-5 levels).
+I would have liked to try to use
+[useState hooks](https://reactjs.org/docs/hooks-reference.html#usestate) for this project but I
+opted to limit my exposure to new stuff to reduce the risk of getting stuck.
 
 ## Work in progress note:
 

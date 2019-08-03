@@ -1,7 +1,7 @@
 import React from "react";
-import { Text, View, StyleSheet, Image, Dimensions } from "react-native";
+import { Text, View, StyleSheet, Dimensions } from "react-native";
 
-import { User, UserPhoto } from "../utilities/Types";
+import { User } from "../utilities/Types";
 import { isDebug } from "../utilities/Constants";
 import UserPhotos from "./UserPhotos";
 
@@ -22,7 +22,7 @@ interface UserViewProps {
 }
 
 /** Displays a user profile. Photo/s, name, age, gender, sexuality, about, desires, interests. */
-const UsersView2: React.FC<UserViewProps> = props => {
+const UsersView: React.FC<UserViewProps> = props => {
   // A temporary fix for when the `user` prop is empty. This has the drawback of returning an empty
   // view. This results in the layout jumping around once a user has been loaded. To be fixed later.
   if (!props.user) return null;
@@ -97,4 +97,4 @@ const s = StyleSheet.create({
   },
 });
 
-export default UsersView2;
+export default UsersView;

@@ -1,15 +1,15 @@
 import React from "react";
-import { createBottomTabNavigator, createAppContainer } from "react-navigation";
+import { createBottomTabNavigator, createAppContainer, BottomTabBar } from "react-navigation";
 import { SimpleLineIcons } from "@expo/vector-icons";
 
 import Info from "./screens/Info";
 import Chat from "./screens/Chat";
 import DecideUsers from "./screens/DecideUsers";
 import ListOfUsers from "./components/ListOfUsers";
-import { SafeAreaView } from "react-native";
+import { SafeAreaView, StyleSheet } from "react-native";
 import SwipeTester from "./components/SwipeTester";
 import SwipeTester2 from "./components/SwipeTester2";
-import { THEME_COLOUR_PURPLE } from "./utilities/Constants";
+import { isDebug, THEME_COLOUR_PURPLE } from "./utilities/Constants";
 
 function ListOfUsersScreen() {
   return (
@@ -30,7 +30,7 @@ function DecideUsersScreen() {
 const TabNavigator = createBottomTabNavigator(
   {
     Decide: DecideUsersScreen,
-    Chat: Chat, // Not implemented yet
+    // Chat: Chat, // Not implemented yet
     Info: Info,
 
     // Debug screens
@@ -64,7 +64,15 @@ const TabNavigator = createBottomTabNavigator(
       activeTintColor: THEME_COLOUR_PURPLE,
       inactiveTintColor: "gray",
     },
+    tabBarComponent: props => <BottomTabBar {...props} style={s.tabBar} />,
   }
 );
+
+const s = StyleSheet.create({
+  tabBar: {
+    // Hide the line on top of the bottom tab bar
+    borderTopColor: "rgba(0, 0, 0, 0)",
+  },
+});
 
 export default createAppContainer(TabNavigator);

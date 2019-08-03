@@ -66,6 +66,9 @@ but I opted to limit my exposure to new stuff to reduce the risk of getting stuc
 - \<SafeWorkingArea> doesn't seem to work on Android as I expected. The app reaches all the way to
   the top of the screen and extends under the toolbar. This behaviour actually looks pretty nice on
   the Decision screen (photos reach all at the way to the top) but not on the Info and Chat screens.
+- The image on the Info screen doesn't seem to be preloaded. When the screen opens the images loads
+  in after a split second. I thought that images in the `asset/` folder, or local images included
+  with `require()` didn't need to be prefetched in Expo.
 
 ## Implementaiton Notes
 

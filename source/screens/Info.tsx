@@ -15,7 +15,9 @@ const Info: React.FC<Props> = props => {
 
       <View>
         <Text style={s.centerText}>This app is a coding challenge for Feeld.</Text>
-        <Text style={s.centerText}>
+        <Text style={s.centerText}>Swipe right to like a user. Left to dislike.</Text>
+        <Text style={s.centerText}>Tap user photos to flip through them.</Text>
+        <Text style={s.author}>
           <Text style={s.bold}>Author</Text>: Jón Rúnar Helgason, jonrh.is
         </Text>
       </View>
@@ -53,6 +55,11 @@ const s = StyleSheet.create({
 
   centerText: {
     textAlign: "center",
+  },
+
+  author: {
+    textAlign: "center",
+    marginTop: 20,
   },
 });
 

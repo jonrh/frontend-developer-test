@@ -1,43 +1,27 @@
 import React from "react";
+import { SafeAreaView, StyleSheet } from "react-native";
 import { createBottomTabNavigator, createAppContainer, BottomTabBar } from "react-navigation";
 import { SimpleLineIcons } from "@expo/vector-icons";
 
 import { THEME_COLOUR_PURPLE } from "./utilities/Constants";
 import Info from "./screens/Info";
 import DecideUsers from "./screens/DecideUsers";
-import ListOfUsers from "./components/ListOfUsers";
-import { SafeAreaView, StyleSheet } from "react-native";
-import SwipeTester from "./components/SwipeTester";
-import SwipeTester2 from "./components/SwipeTester2";
-import SwipeTester3 from "./components/SwipeTester3";
-import DecideUsersOld from "./screens/DecideUsersOld";
-
-function ListOfUsersScreen() {
-  return (
-    <SafeAreaView style={{ flex: 1 }}>
-      <ListOfUsers />
-    </SafeAreaView>
-  );
-}
-
-function DecideUsersScreen() {
-  return (
-    <SafeAreaView style={{ flex: 1 }}>
-      <DecideUsersOld />
-    </SafeAreaView>
-  );
-}
+// import ListOfUsers from "./graveyard/ListOfUsers";
+// import SwipeTester from "./graveyard/SwipeTester";
+// import SwipeTester2 from "./graveyard/SwipeTester2";
+// import SwipeTester3 from "./graveyard/SwipeTester3";
+// import DecideUsersOld from "./graveyard/DecideUsersOld";
 
 const TabNavigator = createBottomTabNavigator(
   {
     Decide: DecideUsers,
-    DecideOld: DecideUsersScreen,
+    // DecideOld: DecideUsersOld, // The original voting without swiping & animations
     Info: Info,
 
     // Debug screens
     // Swipe3: SwipeTester3,
     // Swipe2: SwipeTester2,
-    // List: ListOfUsersScreen,
+    // List: ListOfUsers,
     // Swipe1: SwipeTester,
   },
   {

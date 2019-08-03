@@ -3,7 +3,7 @@ import { Button, ScrollView, StyleSheet, Text, View } from "react-native";
 
 import { User } from "../utilities/Types";
 import { get20Users } from "../utilities/FeeldAPI";
-import UserView from "./UserView";
+import UserView from "../components/UserView";
 import { isDebug } from "../utilities/Constants";
 
 interface Props {}

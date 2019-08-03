@@ -2,9 +2,9 @@ import React from "react";
 import { View, StyleSheet, Animated, Dimensions, PanResponder } from "react-native";
 
 import { User, UserID } from "../utilities/Types";
-import { get20Users, postUserDecision } from "../utilities/FeeldAPI";
 import { isDebug } from "../utilities/Constants";
-import UsersView2 from "../components/UserView2";
+import { get20Users, postUserDecision } from "../utilities/FeeldAPI";
+import UsersView from "../components/UserView";
 
 /** How many users we want to have ready locally before we request more users from the API */
 const MIN_USER_POOL_SIZE = 3;
@@ -196,7 +196,7 @@ class Vote extends React.Component<Props, State> {
       <View style={s.container}>
         {/* The next user ready waiting underneath */}
         <Animated.View key={nextUserID} style={[s.card, nextCardStyle]}>
-          <UsersView2 user={nextUser} />
+          <UsersView user={nextUser} />
         </Animated.View>
 
         {/* The current user in view */}
@@ -205,7 +205,7 @@ class Vote extends React.Component<Props, State> {
           style={[s.card, animatedStyle]}
           {...this.panResponder.panHandlers}
         >
-          <UsersView2 user={currentUser} />
+          <UsersView user={currentUser} />
         </Animated.View>
       </View>
     );

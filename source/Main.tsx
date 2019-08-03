@@ -2,13 +2,15 @@ import React from "react";
 import { createBottomTabNavigator, createAppContainer, BottomTabBar } from "react-navigation";
 import { SimpleLineIcons } from "@expo/vector-icons";
 
+import { THEME_COLOUR_PURPLE } from "./utilities/Constants";
 import Info from "./screens/Info";
 import DecideUsers from "./screens/DecideUsers";
 import ListOfUsers from "./components/ListOfUsers";
 import { SafeAreaView, StyleSheet } from "react-native";
 import SwipeTester from "./components/SwipeTester";
 import SwipeTester2 from "./components/SwipeTester2";
-import { isDebug, THEME_COLOUR_PURPLE } from "./utilities/Constants";
+import SwipeTester3 from "./components/SwipeTester3";
+import DecideUsersOld from "./screens/DecideUsersOld";
 
 function ListOfUsersScreen() {
   return (
@@ -21,20 +23,22 @@ function ListOfUsersScreen() {
 function DecideUsersScreen() {
   return (
     <SafeAreaView style={{ flex: 1 }}>
-      <DecideUsers />
+      <DecideUsersOld />
     </SafeAreaView>
   );
 }
 
 const TabNavigator = createBottomTabNavigator(
   {
-    Decide: DecideUsersScreen,
+    Decide: DecideUsers,
+    DecideOld: DecideUsersScreen,
     Info: Info,
 
     // Debug screens
+    // Swipe3: SwipeTester3,
+    // Swipe2: SwipeTester2,
     // List: ListOfUsersScreen,
     // Swipe1: SwipeTester,
-    // Swipe2: SwipeTester2,
   },
   {
     defaultNavigationOptions: ({ navigation }) => ({
@@ -49,11 +53,8 @@ const TabNavigator = createBottomTabNavigator(
         } else if (routeName === "Info") {
           return <SimpleLineIcons name="info" size={32} color={tintColor} />;
         } else {
-          // As a placeholder while I develop, show some icon for dev screens
+          // When all else fails, at least give the world a smiley icon : )
           return <SimpleLineIcons name="emotsmile" size={32} color={tintColor} />;
-
-          // Before I finish we should return null here, uncomment when I'm done testing
-          // return null;
         }
       },
     }),

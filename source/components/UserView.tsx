@@ -70,7 +70,7 @@ const UsersView: React.FC<UserViewProps> = props => {
   let userName = name;
   let userAgeGenderSexuality = `${age}y ${sexuality} ${gender}`;
 
-  // If there is an associated user (couple), append it to the name and info labels
+  // If there is an associated user (couple), append to the name and info labels
   if (associated) {
     userName += ` & ${associated.name}`;
     userAgeGenderSexuality += `, ${associated.age}y ${associated.sexuality} ${associated.gender}`;

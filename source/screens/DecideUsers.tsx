@@ -54,7 +54,8 @@ class DecideUsers extends React.Component<Props, State> {
       .then(users => {
         this.setState(state => {
           // Filter out users we have already made a decision on before
-          const additionalUsers = users.filter(user => !state.decidedUserIDs.includes(user.id));
+          const additionalUsers =
+            users && users.filter(user => !state.decidedUserIDs.includes(user.id));
 
           return {
             // Add new users to the pool to be decided upon

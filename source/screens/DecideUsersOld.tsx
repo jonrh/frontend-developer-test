@@ -2,9 +2,9 @@ import React from "react";
 import { Text, View, StyleSheet, TouchableOpacity } from "react-native";
 
 import { User, UserID } from "../utilities/Types";
-import UsersView from "../components/UserView";
-import { get20Users, postUserDecision } from "../utilities/FeeldAPI";
 import { isDebug } from "../utilities/Constants";
+import { get20Users, postUserDecision } from "../utilities/FeeldAPI";
+import UsersViewOld from "../components/UserViewOld";
 
 /** How many users we want to have ready locally before we request more users from the API */
 const MIN_USER_POOL_SIZE = 3;
@@ -135,7 +135,7 @@ class DecideUsersOld extends React.Component<Props, State> {
 
     return (
       <View style={s.container}>
-        <UsersView user={currentUser} />
+        <UsersViewOld user={currentUser} />
 
         {this.state.userPool.length === 0 ? AllCaughtUp : null}
 

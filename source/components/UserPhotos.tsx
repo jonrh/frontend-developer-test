@@ -79,9 +79,14 @@ class UserPhotos extends React.Component<Props, State> {
   }
 }
 
+const { height } = Dimensions.get("window");
+let imageHeight = height * GOLDEN_RATIO;
+if (height <= 650) imageHeight = height * 0.55;
+if (height <= 600) imageHeight = height * 0.5;
+
 const s = StyleSheet.create({
   image: {
-    height: Dimensions.get("window").height * GOLDEN_RATIO,
+    height: imageHeight,
     width: null,
 
     backgroundColor: isDebug ? "blue" : null,

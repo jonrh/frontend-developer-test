@@ -53,7 +53,7 @@ the QR code [here](https://expo.io/@jonrh/akur) or below with your with your cam
 
 ## Architecture
 
-For **state management** I kept it deliberately simple: React
+For state management I kept it deliberately simple: React
 [`setState()`](https://reactjs.org/docs/react-component.html#setstate). In previous apps I have
 usually used [Redux](https://redux.js.org/). I tend to avoid it for small apps like this one but
 use it when the benefits (reliability, predictability) start to outweigh the cost (boilerplate,

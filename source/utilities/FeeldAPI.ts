@@ -2,7 +2,7 @@ import axios, { AxiosError, AxiosRequestConfig, Method } from "axios";
 import MockAdapter from "axios-mock-adapter";
 
 import users from "./demoUsers";
-import { User, UserDecision } from "./Types";
+import { UserDecision } from "./Types";
 
 // Feeld Developer Test API url to get 20 random users
 const USERS_URL = "https://fld-devtest-api.herokuapp.com/api/v1/users";
@@ -65,11 +65,16 @@ function getAxiosConfig(method: Method, url: string, data?: any): AxiosRequestCo
 export function get20Users() {
   const axiosConfig: AxiosRequestConfig = getAxiosConfig("get", USERS_URL);
 
-  console.log("Fetching new users"); // Debug
-
   return axios(axiosConfig)
     .then(response => response.data.data)
     .catch(error => console.log(error));
+
+  // When debugging, append local mock users first
+  // return axios(axiosConfig)
+  //   .then(response => {
+  //     return [users[1], users[2], users[3], ...response.data.data];
+  //   })
+  //   .catch(error => console.log(error));
 }
 
 export function getLocalUsers() {

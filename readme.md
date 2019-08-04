@@ -26,7 +26,6 @@ task was to create a dating app in [React Native](https://facebook.github.io/rea
 	<img alt="Akur logo" src="./docs/demo_video.gif">
 </p>
 
-TODO NOTE: THE CURRENTLY PUBLISHED VERSION IS NOT THE LATEST. WILL UPDATE ONCE PROJECT IS COMPLETE.
 To quickly run this app on Android, install the
 [Expo app](https://play.google.com/store/apps/details?id=host.exp.exponent&referrer=www) then scan
 the QR code [here](https://expo.io/@jonrh/akur) or below with your with your camera:

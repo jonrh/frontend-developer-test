@@ -166,7 +166,7 @@ class DecideUsers extends React.Component<Props, State> {
   };
 
   render() {
-    if (this.state.userPool.length === 0) {
+    if (this.state.userPool.length === 0 && this.state.decidedUserIDs.length !== 0) {
       return <AllCaughtUp />;
     }
 

@@ -16,8 +16,9 @@ task was to create a dating app in [React Native](https://facebook.github.io/rea
 [Expo](https://expo.io/) and, [TypeScript](https://www.typescriptlang.org/).
 
 <p align="center">
-	<img alt="Akur logo" src="./docs/screenshot2.png" width="40%">
-	<img alt="Akur logo" src="./docs/screenshot1.png" width="40%"
+	<img alt="Akur logo" src="./docs/screenshot2.png" width="30%">
+	<img alt="Akur logo" src="./docs/screenshot3.png" width="30%">
+	<img alt="Akur logo" src="./docs/screenshot1.png" width="30%">
 </p>
 
 TODO NOTE: THE CURRENTLY PUBLISHED VERSION IS NOT THE LATEST. WILL UPDATE ONCE PROJECT IS COMPLETE.

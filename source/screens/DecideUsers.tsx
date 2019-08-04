@@ -6,6 +6,7 @@ import { isDebug } from "../utilities/Constants";
 import { get20Users, postUserDecision } from "../utilities/FeeldAPI";
 import UsersView from "../components/UserView";
 import Button from "../components/Button";
+import AllCaughtUp from "../components/AllCaughtUp";
 
 /** How many users we want to have ready locally before we request more users from the API */
 const MIN_USER_POOL_SIZE = 3;
@@ -165,6 +166,10 @@ class DecideUsers extends React.Component<Props, State> {
   };
 
   render() {
+    if (this.state.userPool.length === 0) {
+      return <AllCaughtUp />;
+    }
+
     // The user that is currently being decided on (reject/skip/approve)
     const currentUser = this.getCurrentUser();
     const nextUser = this.getNextUser();

@@ -9,21 +9,20 @@ import DecideUsers from "./screens/DecideUsers";
 // import ListOfUsers from "./graveyard/ListOfUsers";
 // import SwipeTester from "./graveyard/SwipeTester";
 // import SwipeTester2 from "./graveyard/SwipeTester2";
-// import SwipeTester3 from "./graveyard/SwipeTester3";
 // import DecideUsersOld from "./graveyard/DecideUsersOld";
 
 /** The bottom tab bar that provides navigation in the app, switching between screens. */
 const TabNavigator = createBottomTabNavigator(
+  // The screens of the app
   {
     Decide: DecideUsers,
-    // DecideOld: DecideUsersOld, // The original voting without swiping & animations
     Info: Info,
 
     // Debug screens
-    // Swipe3: SwipeTester3,
+    // Swipe1: SwipeTester,
     // Swipe2: SwipeTester2,
     // List: ListOfUsers,
-    // Swipe1: SwipeTester,
+    // DecideOld: DecideUsersOld, // The original voting without swiping & animations
   },
   {
     defaultNavigationOptions: ({ navigation }) => ({

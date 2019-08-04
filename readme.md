@@ -15,7 +15,10 @@ This is a [coding challenge](https://github.com/Feeld/frontend-developer-test) f
 task was to create a dating app in [React Native](https://facebook.github.io/react-native/),
 [Expo](https://expo.io/) and, [TypeScript](https://www.typescriptlang.org/).
 
-TODO: ADD A SCREENSHOT OF THE APP
+<p align="center">
+	<img alt="Akur logo" src="./docs/screenshot2.png" width="40%">
+	<img alt="Akur logo" src="./docs/screenshot1.png" width="40%"
+</p>
 
 TODO NOTE: THE CURRENTLY PUBLISHED VERSION IS NOT THE LATEST. WILL UPDATE ONCE PROJECT IS COMPLETE.
 To quickly run this app on Android, install the
@@ -52,18 +55,13 @@ I would have liked to try to use
 [useState hooks](https://reactjs.org/docs/hooks-reference.html#usestate) for this project but I
 opted to limit my exposure to new stuff to reduce the risk of getting stuck.
 
-## Work in progress note:
+For navigation I used the excellent library [react-navigation](https://reactnavigation.org/). I use
+just a simple bottom tab bar with two screens and custom icons with purple brand colour.
 
-- User with ID "55be3c90c964860700ebf5dd" has an interest with an emoji. I should make sure that
-  emojis can render properly in text elements. I forgot if they did or not. I just remember that in
-  Creact React App emojis need to be put into <span> elements with the correct attributes. Just
-  wondering if the same applies here for React Native.
-- I discovered that the response from the API can contain the same user multiple times in the same
-  request. I created a script outside the project that called the API about 30 times and extracted
-  all 100 unique user objects and put them in the `users.ts` file.
-- There is a bug in react-native-swiper. Sometimes the photo state doesn't get updated correctly
-  when flipping through photos. I don't really have time to address it right now. A user can flip
-  through the photos, it's just that the UX isn't optimal because the photos don't loop around.
+Source code is automatically formatted with [Prettier](https://prettier.io/) and
+[Husky git hooks](https://prettier.io/docs/en/precommit.html#option-2-pretty-quick-https-githubcom-azz-pretty-quick)
+enforces that no nonformatted code can be commited into the repository (unless the hook is
+bypassed).
 
 ## Bugs
 
@@ -73,17 +71,19 @@ opted to limit my exposure to new stuff to reduce the risk of getting stuck.
 - The image on the Info screen doesn't seem to be preloaded. When the screen opens the images loads
   in after a split second. I thought that images in the `asset/` folder, or local images included
   with `require()` didn't need to be prefetched in Expo.
+- The swipe animation halts a bit towards the end. This enables a buggy behaviour where it is
+  possible to rapidly tap the dislike/like buttons to juggle the user around.
 
 ## Implementation Notes
 
-- I'm not pleased with the user experience of flipping through photos of a single user. I used the
-  library [react-native-swiper](https://github.com/leecade/react-native-swiper). It was nice to get
-  quickly started but I found it to be somewhat buggy. When a user has multiple photos the
-  pagination would sometimes not work correctly. I'm also not happy with the UI of the pagination
-  dots. On bright coloured photos the inactive dots are barely visible. If I had more time I would
-  have made a custom pagination component that would be robust to light and dark backgrounds. For
-  example with a dark grey transparent background and then transparent light grey pagination
-  buttons.
+- Originally I attempted to use
+  [react-native-swiper](https://github.com/leecade/react-native-swiper) to swipe through photos of
+  a single user. When I started experimenting with adding swiping left/right to make a dislike/like
+  decision on users I ran into problems. I attempted to use a horizontal Swiper to dislike/like
+  users and within that Swiper was another vertical Swiper for the photos of the user. It somewhat
+  worked but I ran into state bugs I was not able to resolve. These efforts can be seen in the file
+  `SwipTester.tsx` and `SwipeTester2.tsx`. This work can also be seen in the deprecated files
+  `DecideUsersOld.tsx` and `UserViewOld.tsx` if you are curious.
 - I spent quite a bit of time learning and playing with
   [Animated](https://facebook.github.io/react-native/docs/animated),
   [Reanimated](https://github.com/kmagiera/react-native-reanimated),
@@ -156,8 +156,6 @@ just played around a little bit with gradients and drop shadows. Here are the fi
   - `screens/`: High level views of the app, each file is a screen in the app
   - `utilities/`: Other various TypeScript code, for example types, API code, etc.
   - `Main.tsx`: The root component of the app.
-  - `users.ts`: A TypeScript file that contains all 100 users provided by the Feeld API. Note: not
-    submitted to git, kept private for now.
 - `.gitignore`: Specifies what files and folders we don't want to keep track of in our
   [Git](https://git-scm.com/) repository.
 - `.watchmanconfig`: Configuration file for Watchman. Used by Expo to listen for events when files
@@ -178,6 +176,19 @@ just played around a little bit with gradients and drop shadows. Here are the fi
 - `yarn.lock`: An autogenerated file by the [Yarn](https://yarnpkg.com/lang/en/docs/yarn-lock/)
   package manager. It allows us to get consistent installs across machines. Avoids rare but very
   painful inconsistency bugs.
+
+## Work in progress note:
+
+- I noticed a user had an interest with an emoji. I should make sure that emojis can render
+  properly in text elements. I forgot if they did or not. I just remember that in Creact React App
+  emojis need to be put into <span> elements with the correct attributes. Just wondering if the same
+  applies here for React Native. **Update**: This turned out to be no problem.
+- I discovered that the response from the API can contain the same user multiple times in the same
+  request. I created a script outside the project that called the API about 30 times and extracted
+  all 100 unique user objects and put them in the `users.ts` file.
+- There is a bug in react-native-swiper. Sometimes the photo state doesn't get updated correctly
+  when flipping through photos. A user can flip through the photos, it's just that the UX isn't
+  optimal because the photos don't loop around.
 
 ---
 

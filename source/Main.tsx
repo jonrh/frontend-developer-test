@@ -1,5 +1,5 @@
 import React from "react";
-import { SafeAreaView, StyleSheet } from "react-native";
+import { StyleSheet } from "react-native";
 import { createBottomTabNavigator, createAppContainer, BottomTabBar } from "react-navigation";
 import { SimpleLineIcons } from "@expo/vector-icons";
 
@@ -12,6 +12,7 @@ import DecideUsers from "./screens/DecideUsers";
 // import SwipeTester3 from "./graveyard/SwipeTester3";
 // import DecideUsersOld from "./graveyard/DecideUsersOld";
 
+/** The bottom tab bar that provides navigation in the app, switching between screens. */
 const TabNavigator = createBottomTabNavigator(
   {
     Decide: DecideUsers,

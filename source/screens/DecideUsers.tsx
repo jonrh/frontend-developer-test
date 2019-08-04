@@ -5,6 +5,7 @@ import { User, UserID } from "../utilities/Types";
 import { isDebug } from "../utilities/Constants";
 import { get20Users, postUserDecision } from "../utilities/FeeldAPI";
 import UsersView from "../components/UserView";
+import Button from "../components/Button";
 
 /** How many users we want to have ready locally before we request more users from the API */
 const MIN_USER_POOL_SIZE = 3;
@@ -80,24 +81,7 @@ class DecideUsers extends React.Component<Props, State> {
       });
   };
 
-  nopePressed = () => {
-    Animated.spring(this.position, {
-      friction: 11,
-      tension: 60,
-      toValue: -SWIPE_DISTANCE,
-      useNativeDriver: true,
-    }).start(this.moveToNext);
-  };
-
-  yepPressed = () => {
-    Animated.spring(this.position, {
-      friction: 11,
-      tension: 60,
-      toValue: SWIPE_DISTANCE,
-      useNativeDriver: true,
-    }).start(this.moveToNext);
-  };
-
+  /** Move to the next user in the stack */
   moveToNext = ({ finished }) => {
     // Don't do anything if the animation hasn't finished
     if (!finished) return;
@@ -119,6 +103,7 @@ class DecideUsers extends React.Component<Props, State> {
     return this.state.userPool[1];
   };
 
+  /** We have voted on a user, remove the user from the remaining candidates */
   removeCurrentUserFromPool = () => {
     this.setState(previousState => {
       // The user we just took a decision on
@@ -136,6 +121,7 @@ class DecideUsers extends React.Component<Props, State> {
       };
     }, this.resetPosition);
 
+    // Get more users if the remaining user pool is running low
     if (this.state.userPool.length <= MIN_USER_POOL_SIZE) {
       this.getUsers();
     }
@@ -143,25 +129,39 @@ class DecideUsers extends React.Component<Props, State> {
 
   /** Reject the current user, indicating there is not an interest in opening a dialog. */
   reject = () => {
-    const currentUser = this.state.userPool[0];
-    console.log(`reject: ${currentUser.id}`);
+    const currentUser = this.getCurrentUser();
+    console.log(`reject: ${currentUser.id}`); // Debug
+
+    Animated.spring(this.position, {
+      friction: 11,
+      tension: 60,
+      toValue: -SWIPE_DISTANCE,
+      useNativeDriver: true,
+    }).start(this.moveToNext);
 
     postUserDecision({ decision: "reject", user: currentUser });
-    this.removeCurrentUserFromPool();
   };
 
   /** Don't take a decision on the current user, defer the decision to a later date. */
   skip = () => {
-    console.log(`skip: ${this.state.userPool[0].id}`);
+    console.log(`skip: ${this.state.userPool[0].id}`); // Debug
 
+    postUserDecision({ decision: "skip", user: this.getCurrentUser() });
     this.removeCurrentUserFromPool();
   };
 
   /** Approve the current user, indicating an interest to take things further with a chat. */
   approve = () => {
-    console.log(`approve: ${this.state.userPool[0].id}`);
+    console.log(`approve: ${this.state.userPool[0].id}`); // Debug
 
-    this.removeCurrentUserFromPool();
+    Animated.spring(this.position, {
+      friction: 11,
+      tension: 60,
+      toValue: SWIPE_DISTANCE,
+      useNativeDriver: true,
+    }).start(this.moveToNext);
+
+    postUserDecision({ decision: "approve", user: this.getCurrentUser() });
   };
 
   render() {
@@ -211,6 +211,12 @@ class DecideUsers extends React.Component<Props, State> {
         >
           <UsersView user={currentUser} />
         </Animated.View>
+
+        <View style={s.buttonGroup}>
+          <Button buttonText={"👎"} onPress={this.reject} />
+          <Button buttonText={"skip"} onPress={this.skip} />
+          <Button buttonText={"👍"} onPress={this.approve} />
+        </View>
       </View>
     );
   }
@@ -226,6 +232,17 @@ const s = StyleSheet.create({
 
   card: {
     position: "absolute",
+  },
+
+  buttonGroup: {
+    position: "absolute",
+    bottom: 0,
+
+    flexDirection: "row",
+    alignItems: "center",
+    justifyContent: "center",
+
+    backgroundColor: isDebug ? "green" : null,
   },
 });
 

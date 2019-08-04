@@ -73,14 +73,14 @@ bypassed).
 
 ## Bugs
 
-- \<SafeWorkingArea> doesn't seem to work on Android as I expected. The app reaches all the way to
-  the top of the screen and extends under the toolbar. This behaviour actually looks pretty nice on
-  the Decision screen (photos reach all at the way to the top) but not on the Info and Chat screens.
 - The image on the Info screen doesn't seem to be preloaded. When the screen opens the images loads
   in after a split second. I thought that images in the `asset/` folder, or local images included
   with `require()` didn't need to be prefetched in Expo.
 - The swipe animation halts a bit towards the end. This enables a buggy behaviour where it is
   possible to rapidly tap the dislike/like buttons to juggle the user around.
+- Some times I get a warnings when two children used the same `key` attribute. This originates from
+  the `<Animated.View>` components in `DecideUsers.tsx`. I don't think it would be hard to fix but
+  I simply ran out of time.
 
 ## Implementation Notes
 
@@ -197,6 +197,9 @@ just played around a little bit with gradients and drop shadows. Here are the fi
 - There is a bug in react-native-swiper. Sometimes the photo state doesn't get updated correctly
   when flipping through photos. A user can flip through the photos, it's just that the UX isn't
   optimal because the photos don't loop around.
+- \<SafeWorkingArea> doesn't seem to work on Android as I expected. The app reaches all the way to
+  the top of the screen and extends under the toolbar. This behaviour actually looks pretty nice on
+  the Decision screen (photos reach all at the way to the top) but not on the Info and Chat screens.
 
 ---
 

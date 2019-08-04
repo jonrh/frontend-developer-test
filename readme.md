@@ -14,11 +14,16 @@ This is a [coding challenge](https://github.com/Feeld/frontend-developer-test) f
 [Feeld](https://feeld.co/). The challenge took take place between 2019-07-27 and 2019-08-03. The
 task was to create a dating app in [React Native](https://facebook.github.io/react-native/),
 [Expo](https://expo.io/) and, [TypeScript](https://www.typescriptlang.org/).
+[Here](./docs/demo_video.mov) is a high resolution demo video of the app in use.
 
 <p align="center">
 	<img alt="Akur logo" src="./docs/screenshot2.png" width="30%">
 	<img alt="Akur logo" src="./docs/screenshot3.png" width="30%">
 	<img alt="Akur logo" src="./docs/screenshot1.png" width="30%">
+</p>
+
+<p align="center">
+	<img alt="Akur logo" src="./docs/demo_video.gif">
 </p>
 
 TODO NOTE: THE CURRENTLY PUBLISHED VERSION IS NOT THE LATEST. WILL UPDATE ONCE PROJECT IS COMPLETE.

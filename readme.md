@@ -26,7 +26,9 @@ To quickly run this app on Android, install the
 [Expo app](https://play.google.com/store/apps/details?id=host.exp.exponent&referrer=www) then scan
 the QR code [here](https://expo.io/@jonrh/akur) or below with your with your camera:
 
-![Akur Expo app QR Code](expo-published-qr-code.png)
+<p align="center">
+	<img alt="Akur Expo app QR Code" src="./docs/expo-published-qr-code.png" width="30%">
+</p>
 
 ## How to run and develop on your own computer
 
